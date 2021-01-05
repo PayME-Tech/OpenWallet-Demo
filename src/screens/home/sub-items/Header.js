@@ -5,9 +5,8 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
-import {IconButton} from '../../../components/IconButton';
 
-export const Header = ({openPopupInputPhone}) => {
+export const Header = ({openPopupInputPhone, phone, balance, openWallet}) => {
   return (
     <View style={styles.header}>
       <View style={styles.header__top}>
@@ -25,19 +24,19 @@ export const Header = ({openPopupInputPhone}) => {
           <View style={styles.account__right}>
             <View style={styles.account__lable__container}>
               <Text style={styles.txtAccount}>Tài khoản</Text>
-              <IconButton source={<ImagesSVG.IconRefresh />} />
+              <ImagesSVG.IconRefresh />
             </View>
 
-            <Text style={styles.txtAccount}>0983000300</Text>
+            <Text style={styles.txtAccount}>{phone || ''}</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.balance__container}>
+        <TouchableOpacity style={styles.balance__container} onPress={() => openWallet?.()}>
           <ImagesSVG.IconWallet style={{marginTop: 5}} />
 
           <View style={styles.balance__content}>
             <Text style={styles.txtBalanceLable}>Số dư khả dụng</Text>
-            <Text style={styles.txtBalance}>0 đ</Text>
+            <Text style={styles.txtBalance}>{`${balance} đ`}</Text>
           </View>
         </TouchableOpacity>
       </View>

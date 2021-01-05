@@ -14,12 +14,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Fonts} from '../../../assets/Fonts';
 import {IconButton} from '../../../components/IconButton';
 
-export const PopupInputPhone = ({modalRef}) => {
+export const PopupInputPhone = ({modalRef, updatePhone}) => {
   const closeModal = () => modalRef?.current?.close();
   const [phone, setPhone] = useState('');
+  const [blur, setBlur] = useState(false);
 
   const handlePressBtn = () => {
-    closeModal();
+    if (/^([0-9]){10}$/g.test(phone)) {
+      closeModal();
+      updatePhone?.(phone);
+    }
   };
 
   return (
@@ -41,7 +45,12 @@ export const PopupInputPhone = ({modalRef}) => {
           placeholder="SĐT của bạn"
           keyboardType="phone-pad"
           maxLength={10}
+          onBlur={() => setBlur(true)}
         />
+
+        {blur && !/^([0-9]){10}$/g.test(phone) && (
+          <Text style={styles.txtError}>Số điện thoại không hợp lệ</Text>
+        )}
 
         <LinearGradient
           start={{x: 0.0, y: 0.25}}
@@ -97,5 +106,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.MainSemiBold,
     fontSize: 18,
     color: Colors.white,
+  },
+  txtError: {
+    fontFamily: Fonts.MainRegular,
+    fontSize: 14,
+    color: Colors.red,
   },
 });
