@@ -1,6 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useRef } from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Colors} from '../../assets/Colors';
 import {Layout} from '../../components/layout/Layout';
@@ -10,8 +11,15 @@ import {Images, ImagesSVG} from '../../assets/Image';
 import {Header} from './sub-items/Header';
 import {ServiceUtilPayme} from './sub-items/ServiceUtilPayme';
 import {ListProduct} from './sub-items/ListProduct';
+import { Footer } from './sub-items/Footer';
+import { PopupInputPhone } from './sub-items/PopupInputPhone';
 
 export const Home = () => {
+  const popupInputPhoneRef = useRef(null);
+
+  const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
+  
+
   return (
     <Layout backgroundColor={'#E5E6ED'}>
       <View style={styles.layoutHeader}>
@@ -21,9 +29,10 @@ export const Home = () => {
         />
       </View>
 
-      <Header />
+      <Header openPopupInputPhone={openPopupInputPhone} />
 
       <ServiceUtilPayme />
+
       <ScrollView bounces={false} nestedScrollEnabled style={{marginTop: 10}}>
         <View style={styles.banner}>
           <Image source={Images.BannerSample} style={{width: '100%'}} />
@@ -32,9 +41,9 @@ export const Home = () => {
         <ListProduct />
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Text>1111111111111111</Text>
-      </View>
+      <Footer />
+
+      <PopupInputPhone modalRef={popupInputPhoneRef} />
     </Layout>
   );
 };
@@ -54,7 +63,4 @@ const styles = StyleSheet.create({
   banner: {
     width: '100%',
   },
-  footer: {
-
-  }
 });

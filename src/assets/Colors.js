@@ -80,4 +80,6 @@ export const Colors = {
   indigoBlue: '#2412bd',
   purpleishBlue: '#705BF6',
   vividBlue: 'rgb(37,48,255)',
+  vibrantGreen: 'rgb(6,211,40)',
+  emeraldGreenThree: 'rgb(0,155,26)',
 };

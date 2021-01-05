@@ -22,7 +22,7 @@ export const ListProduct = () => {
       <ScrollView
         contentContainerStyle={styles.listProduct__container}
         bounces={false}
-        showsHorizontalScrollIndicator
+        showsHorizontalScrollIndicator={false}
         horizontal>
         {['1', '2', '3'].map((item) => (
           <View style={styles.item__container} key={item}>
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 15,
     paddingLeft: 15,
+    paddingBottom: 50,
   },
 
   txtTitle: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   listProduct__container: {
-    marginTop: 10,
+    marginTop: 20,
   },
   item__content__container: {
     backgroundColor: Colors.white,

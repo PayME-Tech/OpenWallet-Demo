@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
@@ -23,11 +23,11 @@ export const ServiceUtilPayme = () => {
 
       <View style={styles.listService__container}>
         {DATA.map((item) => (
-          <View key={item.key} style={styles.item__container}>
+          <TouchableOpacity key={item.key} style={styles.item__container}>
             {item.icon}
 
             <Text style={styles.txtNameService}>{item.name}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>
