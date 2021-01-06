@@ -16,13 +16,17 @@ export const createConnectToken = (phone) => {
 
   let encrypted = cipher.update(JSON.stringify(data), 'utf8', 'base64');
 
-  let result = encrypted + cipher.final('base64');
+  let connectToken = encrypted + cipher.final('base64');
 
-  console.log({result});
+  console.log({connectToken});
 
-  return result;
+  return connectToken;
 };
 
 export function formatNumber(number) {
   return number.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+export function checkValidPhoneNumber(number) {
+  return /^(0|84)\d{9}$/g.test(number);
 }

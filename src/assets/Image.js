@@ -8,6 +8,7 @@ import IconTv from './images/svg/iconTv.svg';
 import IconWater from './images/svg/iconWater.svg';
 import ButtonScan from './images/svg/buttonScan.svg';
 import IconClose from './images/svg/iconModuleClose24Px.svg';
+import IconArrow from './images/svg/icon_arrow.svg';
 
 export const ImagesSVG = {
   IconColor,
@@ -20,6 +21,7 @@ export const ImagesSVG = {
   IconWater,
   ButtonScan,
   IconClose,
+  IconArrow,
 };
 
 export const Images = {

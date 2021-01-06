@@ -6,15 +6,15 @@ import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
 
-export const Header = ({openPopupInputPhone, phone, balance, openWallet}) => {
+export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors}) => {
   return (
     <View style={styles.header}>
       <View style={styles.header__top}>
         <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
 
-        <TouchableOpacity style={styles.changeField__container}>
+        <TouchableOpacity style={styles.changeField__container} onPress={() => openPopupChangField?.()}>
           <Text style={styles.txtChangeField}>Đổi lĩnh vực</Text>
-          <ImagesSVG.IconColor />
+          <ImagesSVG.IconColor fill={colors[1] || '#000000'} />
         </TouchableOpacity>
       </View>
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 
   balance__container: {
     flexDirection: 'row',
-    backgroundColor: Colors.purpleishBlue,
+    backgroundColor: 'rgba(255,255,255,0.2)',
     paddingHorizontal: 20,
     paddingVertical: 5,
     flex: 1,

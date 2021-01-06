@@ -13,16 +13,20 @@ import {ModalizeTransparent} from '../../../components/ModalizeTransparent';
 import LinearGradient from 'react-native-linear-gradient';
 import {Fonts} from '../../../assets/Fonts';
 import {IconButton} from '../../../components/IconButton';
+import {useDispatch} from 'react-redux';
+import {updateApp} from '../../../redux/slices/app.slice';
+import {checkValidPhoneNumber} from '../../../helpers';
 
-export const PopupInputPhone = ({modalRef, updatePhone}) => {
+export const PopupInputPhone = ({modalRef}) => {
   const closeModal = () => modalRef?.current?.close();
   const [phone, setPhone] = useState('');
   const [blur, setBlur] = useState(false);
+  const dispatch = useDispatch();
 
   const handlePressBtn = () => {
-    if (/^([0-9]){10}$/g.test(phone)) {
+    if (checkValidPhoneNumber(phone)) {
       closeModal();
-      updatePhone?.(phone);
+      dispatch(updateApp({phone}));
     }
   };
 
@@ -44,11 +48,11 @@ export const PopupInputPhone = ({modalRef, updatePhone}) => {
           onChangeText={(text) => setPhone(text)}
           placeholder="SĐT của bạn"
           keyboardType="phone-pad"
-          maxLength={10}
+          maxLength={11}
           onBlur={() => setBlur(true)}
         />
 
-        {blur && !/^([0-9]){10}$/g.test(phone) && (
+        {blur && !checkValidPhoneNumber(phone) && (
           <Text style={styles.txtError}>Số điện thoại không hợp lệ</Text>
         )}
 

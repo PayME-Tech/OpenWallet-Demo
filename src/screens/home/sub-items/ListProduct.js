@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 15,
     paddingLeft: 15,
-    paddingBottom: 50,
+    marginBottom: 70,
   },
 
   txtTitle: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   listProduct__container: {
-    marginTop: 20,
+    marginVertical: 20,
   },
   item__content__container: {
     backgroundColor: Colors.white,
