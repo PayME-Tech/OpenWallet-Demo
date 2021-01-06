@@ -50,6 +50,21 @@ export const Home = () => {
   const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
 
+  const handlePay = () => {
+    payME.pay(
+      299000,
+      'a',
+      'b',
+      '',
+      (res) => {
+        console.log(res);
+      },
+      (message) => {
+        console.log(message);
+      },
+    );
+  };
+
   useEffect(() => {
     if (checkValidPhoneNumber(phone)) {
       //do sonmething
@@ -109,7 +124,7 @@ export const Home = () => {
   const renderContent = () => {
     switch (field) {
       case FIELDS.DEFAULT:
-        return <ContentDefault />;
+        return <ContentDefault handlePay={handlePay} />;
       case FIELDS.FIELD_FANDB:
         return <ContentFieldFAndB />;
       case FIELDS.HOTEL:
@@ -148,7 +163,11 @@ export const Home = () => {
 
       <Footer colors={colors} />
 
-      <PopupInputPhone modalRef={popupInputPhoneRef} />
+      <PopupInputPhone
+        modalRef={popupInputPhoneRef}
+        phone={phone}
+        colors={colors}
+      />
       <PopupChangField modalRef={popupChangFieldRef} />
     </Layout>
   );

@@ -9,8 +9,8 @@ export const Footer = ({colors}) => {
     <>
       <View style={styles.container}>
         <View style={styles.left}>
-          <ImagesSVG.IconColor width={22} height={22} fill="#cccccc" />
-          <ImagesSVG.IconColor width={22} height={22} fill="#cccccc" />
+          <ImagesSVG.Icon_1 />
+          <ImagesSVG.Icon_2 />
         </View>
 
         <View style={styles.center}>
@@ -20,8 +20,8 @@ export const Footer = ({colors}) => {
         </View>
 
         <View style={styles.right}>
-          <ImagesSVG.IconColor width={22} height={22} fill="#cccccc" />
-          <ImagesSVG.IconColor width={22} height={22} fill="#cccccc" />
+          <ImagesSVG.Icon_3 />
+          <ImagesSVG.Icon_4 />
         </View>
       </View>
 

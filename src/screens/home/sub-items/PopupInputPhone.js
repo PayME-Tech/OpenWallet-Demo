@@ -17,16 +17,16 @@ import {useDispatch} from 'react-redux';
 import {updateApp} from '../../../redux/slices/app.slice';
 import {checkValidPhoneNumber} from '../../../helpers';
 
-export const PopupInputPhone = ({modalRef}) => {
+export const PopupInputPhone = ({modalRef, phone, colors}) => {
   const closeModal = () => modalRef?.current?.close();
-  const [phone, setPhone] = useState('');
+  const [phoneInput, setPhoneInput] = useState(phone);
   const [blur, setBlur] = useState(false);
   const dispatch = useDispatch();
 
   const handlePressBtn = () => {
-    if (checkValidPhoneNumber(phone)) {
+    if (checkValidPhoneNumber(phoneInput)) {
       closeModal();
-      dispatch(updateApp({phone}));
+      dispatch(updateApp({phone: phoneInput}));
     }
   };
 
@@ -44,22 +44,22 @@ export const PopupInputPhone = ({modalRef}) => {
 
         <TextInput
           style={styles.textInput}
-          value={phone}
-          onChangeText={(text) => setPhone(text)}
+          value={phoneInput}
+          onChangeText={(text) => setPhoneInput(text)}
           placeholder="SĐT của bạn"
           keyboardType="phone-pad"
           maxLength={11}
           onBlur={() => setBlur(true)}
         />
 
-        {blur && !checkValidPhoneNumber(phone) && (
+        {blur && !checkValidPhoneNumber(phoneInput) && (
           <Text style={styles.txtError}>Số điện thoại không hợp lệ</Text>
         )}
 
         <LinearGradient
           start={{x: 0.0, y: 0.25}}
           end={{x: 0.5, y: 1.0}}
-          colors={[Colors.vibrantGreen, Colors.emeraldGreenThree]}
+          colors={colors}
           style={{marginTop: 20, borderRadius: 25}}>
           <TouchableOpacity style={styles.button} onPress={handlePressBtn}>
             <Text style={styles.txtBtn}>Bắt đầu</Text>

@@ -4,7 +4,7 @@ import {Images} from '../../../assets/Image';
 import {ListProduct} from './ListProduct';
 import {ServiceUtilPayme} from './ServiceUtilPayme';
 
-export const ContentDefault = () => {
+export const ContentDefault = ({handlePay}) => {
   return (
     <>
       <ServiceUtilPayme />
@@ -14,7 +14,7 @@ export const ContentDefault = () => {
           <Image source={Images.BannerSample} style={{width: '100%'}} />
         </View>
 
-        <ListProduct />
+        <ListProduct handlePay={handlePay} />
       </ScrollView>
     </>
   );

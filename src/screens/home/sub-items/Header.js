@@ -20,7 +20,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
 
       <View style={styles.header__bottom}>
         <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupInputPhone?.()}>
-          <ImagesSVG.IconAvatar />
+          <ImagesSVG.IconAvatar fill='#ffffff' />
           <View style={styles.account__right}>
             <View style={styles.account__lable__container}>
               <Text style={styles.txtAccount}>Tài khoản</Text>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 15,
     borderBottomWidth: 0.5,
-    borderBottomColor: Colors.indigoBlue,
+    borderBottomColor: 'rgba(204,204,204,0.4)',
   },
   header__bottom: {
     flexDirection: 'row',

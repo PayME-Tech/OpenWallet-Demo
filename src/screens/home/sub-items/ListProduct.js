@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
@@ -14,7 +15,7 @@ import {Images} from '../../../assets/Image';
 import {SCREEN_SIZE} from '../../../configs/variables.config';
 import LinearGradient from 'react-native-linear-gradient';
 
-export const ListProduct = () => {
+export const ListProduct = ({handlePay}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.txtTitle}>Thanh toán sản phẩm của bạn</Text>
@@ -47,7 +48,7 @@ export const ListProduct = () => {
               end={{x: 0.5, y: 1.0}}
               colors={[Colors.lightishBlue, Colors.purplyBlue]}
               style={{marginTop: 10, borderRadius: 20}}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button} onPress={() => handlePay?.()}>
                 <Text style={styles.txtBtn}>Thanh toán ngay</Text>
               </TouchableOpacity>
             </LinearGradient>

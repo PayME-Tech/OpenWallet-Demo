@@ -1,45 +1,45 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Image,
   ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
+  // StyleSheet,
+  // Text,
+  // TextInput,
+  // TouchableOpacity,
   View,
 } from 'react-native';
-import {Colors} from '../../../assets/Colors';
-import {Fonts} from '../../../assets/Fonts';
-import {ImagesSVG} from '../../../assets/Image';
-import {SCREEN_SIZE} from '../../../configs/variables.config';
+// import {Colors} from '../../../assets/Colors';
+// import {Fonts} from '../../../assets/Fonts';
+// import {ImagesSVG} from '../../../assets/Image';
+// import {SCREEN_SIZE} from '../../../configs/variables.config';
 
-const DATA = [
-  {
-    id: '1',
-    price: '19tr310 - 21tr900k',
-    desc: '5 phòng ngủ, 1 phòng tắm',
-    address: '15 Nguyễn Cơ Thạch',
-    image: 'https://picsum.photos/500/300',
-  },
-  {
-    id: '2',
-    price: '11tr446k',
-    desc: '5 phòng ngủ, 1 phòng tắm',
-    address: '96 Trần Phú',
-    image: 'https://picsum.photos/500/300',
-  },
-  {
-    id: '3',
-    price: '19tr310 - 21tr900k',
-    desc: '5 phòng ngủ, 1 phòng tắm',
-    address: '123 Nguyễn Cơ Thạch',
-    image: 'https://picsum.photos/500/300',
-  },
-];
+// const DATA = [
+//   {
+//     id: '1',
+//     price: '19tr310 - 21tr900k',
+//     desc: '5 phòng ngủ, 1 phòng tắm',
+//     address: '15 Nguyễn Cơ Thạch',
+//     image: 'https://picsum.photos/500/300',
+//   },
+//   {
+//     id: '2',
+//     price: '11tr446k',
+//     desc: '5 phòng ngủ, 1 phòng tắm',
+//     address: '96 Trần Phú',
+//     image: 'https://picsum.photos/500/300',
+//   },
+//   {
+//     id: '3',
+//     price: '19tr310 - 21tr900k',
+//     desc: '5 phòng ngủ, 1 phòng tắm',
+//     address: '123 Nguyễn Cơ Thạch',
+//     image: 'https://picsum.photos/500/300',
+//   },
+// ];
 
 export const ContentHotel = () => {
-  const [searchText, setSearchText] = useState('');
+  // const [searchText, setSearchText] = useState('');
 
   return (
     <>
@@ -164,67 +164,67 @@ export const ContentHotel = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  header: {
-    paddingHorizontal: 15,
-  },
-  textInput__conatiner: {
-    backgroundColor: Colors.white,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 15,
-    paddingRight: 15,
-    marginTop: 10,
-  },
-  textInput: {
-    flex: 1,
-    padding: 5,
-    paddingHorizontal: 10,
-    fontFamily: Fonts.MainMedium,
-    fontSize: 14,
-    color: Colors.greyishBrownTwo,
-  },
-  product__container: {
-    height: SCREEN_SIZE.HEIGHT * 0.45,
-    width: SCREEN_SIZE.WIDTH * 0.5,
-    marginRight: 15,
-  },
-  txtPlace: {
-    fontFamily: Fonts.MainMedium,
-    fontSize: 14,
-    color: Colors.white,
-    marginHorizontal: 5,
-  },
-  listHightlight: {
-    marginTop: 15,
-  },
-  txtTitle: {
-    fontFamily: Fonts.MainSemiBold,
-    fontSize: 20,
-    color: Colors.blackThirteen,
-  },
-  txtViewAll: {
-    fontFamily: Fonts.MainSemiBold,
-    fontSize: 12,
-    color: Colors.blackThirteen,
-  },
-  list__container: {
-    paddingLeft: 15,
-  },
-  txtPrice: {
-    fontFamily: Fonts.MainBold,
-    fontSize: 16,
-    color: Colors.purpleishBlueTwo,
-  },
-  txtDesc: {
-    fontFamily: Fonts.MainBold,
-    fontSize: 12,
-    color: Colors.blackFour,
-  },
-  txtAddress: {
-    fontFamily: Fonts.MainBold,
-    fontSize: 10,
-    color: Colors.greyishBrownThree,
-    marginLeft: 5,
-  },
-});
+// const styles = StyleSheet.create({
+//   header: {
+//     paddingHorizontal: 15,
+//   },
+//   textInput__conatiner: {
+//     backgroundColor: Colors.white,
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     borderRadius: 15,
+//     paddingRight: 15,
+//     marginTop: 10,
+//   },
+//   textInput: {
+//     flex: 1,
+//     padding: 5,
+//     paddingHorizontal: 10,
+//     fontFamily: Fonts.MainMedium,
+//     fontSize: 14,
+//     color: Colors.greyishBrownTwo,
+//   },
+//   product__container: {
+//     height: SCREEN_SIZE.HEIGHT * 0.45,
+//     width: SCREEN_SIZE.WIDTH * 0.5,
+//     marginRight: 15,
+//   },
+//   txtPlace: {
+//     fontFamily: Fonts.MainMedium,
+//     fontSize: 14,
+//     color: Colors.white,
+//     marginHorizontal: 5,
+//   },
+//   listHightlight: {
+//     marginTop: 15,
+//   },
+//   txtTitle: {
+//     fontFamily: Fonts.MainSemiBold,
+//     fontSize: 20,
+//     color: Colors.blackThirteen,
+//   },
+//   txtViewAll: {
+//     fontFamily: Fonts.MainSemiBold,
+//     fontSize: 12,
+//     color: Colors.blackThirteen,
+//   },
+//   list__container: {
+//     paddingLeft: 15,
+//   },
+//   txtPrice: {
+//     fontFamily: Fonts.MainBold,
+//     fontSize: 16,
+//     color: Colors.purpleishBlueTwo,
+//   },
+//   txtDesc: {
+//     fontFamily: Fonts.MainBold,
+//     fontSize: 12,
+//     color: Colors.blackFour,
+//   },
+//   txtAddress: {
+//     fontFamily: Fonts.MainBold,
+//     fontSize: 10,
+//     color: Colors.greyishBrownThree,
+//     marginLeft: 5,
+//   },
+// });
