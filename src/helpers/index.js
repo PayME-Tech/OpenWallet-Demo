@@ -18,7 +18,7 @@ export const createConnectToken = (phone) => {
 
   let connectToken = encrypted + cipher.final('base64');
 
-  console.log({connectToken});
+  // console.log({connectToken});
 
   return connectToken;
 };

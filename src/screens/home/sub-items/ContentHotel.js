@@ -2,7 +2,9 @@
 import React from 'react';
 import {
   Image,
+  Platform,
   ScrollView,
+  TouchableOpacity,
   // StyleSheet,
   // Text,
   // TextInput,
@@ -38,7 +40,7 @@ import {
 //   },
 // ];
 
-export const ContentHotel = () => {
+export const ContentHotel = ({handlePay}) => {
   // const [searchText, setSearchText] = useState('');
 
   return (
@@ -152,13 +154,13 @@ export const ContentHotel = () => {
       </ScrollView> */}
 
       <ScrollView bounces={false}>
-        <View style={{width: '100%', paddingBottom: 20}}>
+        <TouchableOpacity style={{width: '100%', paddingBottom: 20}} onPress={() => Platform.OS === 'android' && handlePay?.()}>
           <Image
             source={require('../../../assets/images/png/bodyContent3.png')}
             style={{width: '100%'}}
-            resizeMode="stretch"
+            // resizeMode="stretch"
           />
-        </View>
+        </TouchableOpacity>
       </ScrollView>
     </>
   );

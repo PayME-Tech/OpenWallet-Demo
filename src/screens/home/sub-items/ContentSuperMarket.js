@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   Image,
+  Platform,
   ScrollView,
+  TouchableOpacity,
   // StyleSheet,
   // Text,
   // TouchableOpacity,
@@ -51,7 +53,7 @@ import {
 //   ],
 // };
 
-export const ContentSuperMarket = () => {
+export const ContentSuperMarket = ({handlePay}) => {
   return (
     <>
       {/* <View style={styles.listService}>
@@ -95,12 +97,12 @@ export const ContentSuperMarket = () => {
       </ScrollView> */}
 
       <ScrollView bounces={false}>
-        <View style={{width: '100%', paddingBottom: 20}}>
+        <TouchableOpacity style={{width: '100%', paddingBottom: 20}} onPress={() => Platform.OS === 'android' && handlePay?.()}>
           <Image
             source={require('../../../assets/images/png/contentBody.png')}
             style={{width: '100%'}}
           />
-        </View>
+        </TouchableOpacity>
       </ScrollView>
     </>
   );

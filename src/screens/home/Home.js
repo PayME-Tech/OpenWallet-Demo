@@ -40,7 +40,7 @@ export const Home = () => {
   const {phone, balance, colors, field} = useSelector(
     (state) => state.appReducer,
   );
-  console.log({field, colors});
+  // console.log({field, colors});
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -51,6 +51,8 @@ export const Home = () => {
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
 
   const handlePay = () => {
+    payMEInit();
+
     payME.pay(
       299000,
       'a',
@@ -65,19 +67,23 @@ export const Home = () => {
     );
   };
 
+  const payMEInit = () => {
+    const connectToken = createConnectToken(phone);
+
+    payME.init(
+      appToken,
+      publicKey,
+      connectToken,
+      privateKey,
+      configColor, // change here
+      'sandbox',
+    );
+  };
+
   useEffect(() => {
     if (checkValidPhoneNumber(phone)) {
       //do sonmething
-      const connectToken = createConnectToken(phone);
-
-      payME.init(
-        appToken,
-        publicKey,
-        connectToken,
-        privateKey,
-        configColor, // change here
-        'sandbox',
-      );
+      payMEInit();
 
       payME.getWalletInfo(
         (response) => {
@@ -98,15 +104,7 @@ export const Home = () => {
   }, [phone]);
 
   const openWallet = () => {
-    const connectToken = createConnectToken(phone);
-    payME.init(
-      appToken,
-      publicKey,
-      connectToken,
-      privateKey,
-      configColor, // change here
-      'sandbox',
-    );
+    payMEInit();
 
     payME.openWallet(
       10000,
@@ -126,16 +124,16 @@ export const Home = () => {
       case FIELDS.DEFAULT:
         return <ContentDefault handlePay={handlePay} />;
       case FIELDS.FIELD_FANDB:
-        return <ContentFieldFAndB />;
+        return <ContentFieldFAndB handlePay={handlePay} />;
       case FIELDS.HOTEL:
-        return <ContentHotel />;
+        return <ContentHotel handlePay={handlePay} />;
       case FIELDS.SUPERMARKET:
-        return <ContentSuperMarket />;
+        return <ContentSuperMarket handlePay={handlePay} />;
       case FIELDS.TRAVELTOUR:
-        return <ContentDefault />;
+        return <ContentDefault handlePay={handlePay} />;
 
       default:
-        return <ContentDefault />;
+        return <ContentDefault handlePay={handlePay} />;
     }
   };
 

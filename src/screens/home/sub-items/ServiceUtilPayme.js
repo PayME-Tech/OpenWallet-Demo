@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
-import { SCREEN_SIZE } from '../../../configs/variables.config';
+import {SCREEN_SIZE} from '../../../configs/variables.config';
 
 const DATA = [
   {key: '1', name: 'ĐT trả sau', icon: <ImagesSVG.IconPostpaid />},
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     paddingVertical: 10,
-    width: SCREEN_SIZE.WIDTH-30,
+    width: SCREEN_SIZE.WIDTH - 30,
     backgroundColor: Colors.white,
     alignSelf: 'center',
     borderRadius: 20,

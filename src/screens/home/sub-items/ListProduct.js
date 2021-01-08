@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Platform,
 } from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
@@ -48,7 +49,9 @@ export const ListProduct = ({handlePay}) => {
               end={{x: 0.5, y: 1.0}}
               colors={[Colors.lightishBlue, Colors.purplyBlue]}
               style={{marginTop: 10, borderRadius: 20}}>
-              <TouchableOpacity style={styles.button} onPress={() => handlePay?.()}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => Platform.OS === 'android' && handlePay?.()}>
                 <Text style={styles.txtBtn}>Thanh toán ngay</Text>
               </TouchableOpacity>
             </LinearGradient>

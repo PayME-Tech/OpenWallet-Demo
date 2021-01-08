@@ -1,12 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {ImagesSVG} from '../../../assets/Image';
 import {ModalizeTransparent} from '../../../components/ModalizeTransparent';
@@ -15,7 +9,6 @@ import {Fonts} from '../../../assets/Fonts';
 import {IconButton} from '../../../components/IconButton';
 import {useDispatch} from 'react-redux';
 import {updateApp} from '../../../redux/slices/app.slice';
-import {checkValidPhoneNumber} from '../../../helpers';
 import {FIELDS} from '../../../configs/variables.config';
 
 const DATA = [
@@ -66,7 +59,7 @@ export const PopupChangField = ({modalRef}) => {
 
   const handlePressItem = (item) => {
     if (item.key === FIELDS.TRAVELTOUR) {
-      closeModal();
+      handlePressDefault();
       return;
     }
     dispatch(

@@ -2,7 +2,9 @@
 import React from 'react';
 import {
   Image,
+  Platform,
   ScrollView,
+  TouchableOpacity,
   // StyleSheet,
   // Text,
   // TouchableOpacity,
@@ -42,7 +44,7 @@ import {
 //   },
 // ];
 
-export const ContentFieldFAndB = () => {
+export const ContentFieldFAndB = ({handlePay}) => {
   return (
     <>
       {/* <View style={{height: '16%'}}>
@@ -137,13 +139,15 @@ export const ContentFieldFAndB = () => {
       </View> */}
 
       <ScrollView bounces={false}>
-        <View style={{width: '100%', paddingBottom: 20}}>
+        <TouchableOpacity
+          style={{width: '100%', paddingBottom: 20}}
+          onPress={() => Platform.OS === 'android' && handlePay?.()}>
           <Image
             source={require('../../../assets/images/png/bodyContent2.png')}
             style={{width: '100%'}}
-            resizeMode="stretch"
+            resizeMode="contain"
           />
-        </View>
+        </TouchableOpacity>
       </ScrollView>
     </>
   );
