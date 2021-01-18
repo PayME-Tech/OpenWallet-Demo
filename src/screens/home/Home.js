@@ -1,16 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
-import React, {useEffect, useRef, useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Colors} from '../../assets/Colors';
+import React, {useEffect, useRef} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';
 import LinearGradient from 'react-native-linear-gradient';
-import {Fonts} from '../../assets/Fonts';
-import {Images, ImagesSVG} from '../../assets/Image';
 import {Header} from './sub-items/Header';
-import {ServiceUtilPayme} from './sub-items/ServiceUtilPayme';
-import {ListProduct} from './sub-items/ListProduct';
 import {Footer} from './sub-items/Footer';
 import {PopupInputPhone} from './sub-items/PopupInputPhone';
 import payME from 'react-native-payme-sdk';
@@ -52,24 +47,52 @@ export const Home = () => {
 
   const handlePay = () => {
     payMEInit();
-
-    payME.pay(
-      299000,
-      'a',
-      'b',
-      '',
-      (res) => {
-        console.log(res);
-      },
-      (message) => {
-        console.log(message);
-      },
-    );
+    payMELogin().then((res) => {
+      payME.pay(
+        299000,
+        'a',
+        'b',
+        '',
+        (res) => {
+          console.log(res);
+        },
+        (message) => {
+          console.log(message);
+          Alert.alert(
+            message,
+            'Bạn có muốn kích hoạt không?',
+            [
+              {
+                text: 'Huỷ',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+              },
+              {
+                text: 'Đồng ý',
+                onPress: () => {
+                  payME.openWallet(
+                    10000,
+                    'a',
+                    '',
+                    (res) => {
+                      console.log(res);
+                    },
+                    (message) => {
+                      console.log(message);
+                    },
+                  );
+                },
+              },
+            ],
+            {cancelable: false},
+          );
+        },
+      );
+    });
   };
 
   const payMEInit = () => {
     const connectToken = createConnectToken(phone);
-
     payME.init(
       appToken,
       publicKey,
@@ -77,46 +100,68 @@ export const Home = () => {
       privateKey,
       configColor, // change here
       'sandbox',
+      false,
     );
+  };
+  const payMELogin = () => {
+    return new Promise((resolve) => {
+      payME.login(
+        (response) => {
+          console.log('response', response);
+          resolve(true);
+        },
+        (error) => {
+          console.log('error', error);
+          resolve(false);
+        },
+      );
+    });
   };
 
   useEffect(() => {
+    // console.log({connectToken: createConnectToken('0397227201')});
+
     if (checkValidPhoneNumber(phone)) {
       //do sonmething
       payMEInit();
 
-      payME.getWalletInfo(
-        (response) => {
-          console.log('response', response);
-          dispatch(
-            updateApp({
-              balance: formatNumber(`${response?.walletBalance?.balance || 0}`),
-            }) || '0',
-          );
-        },
-        (error) => {
-          console.log('error', error);
-          dispatch(updateApp({balance: '0'}));
-          alert('Thông tin xác thực không hợp lệ');
-        },
-      );
+      payMELogin().then((res) => {
+        console.log({res});
+        payME.getWalletInfo(
+          (response) => {
+            console.log('response111111111111', response);
+            console.log(formatNumber(`${response?.Wallet?.balance || 0}`));
+            dispatch(
+              updateApp({
+                balance: formatNumber(`${response?.Wallet?.balance || 0}`),
+              }) || '0',
+            );
+          },
+          (error) => {
+            console.log('error2222222222', error);
+            dispatch(updateApp({balance: '0'}));
+            // alert('Thông tin xác thực không hợp lệ');
+          },
+        );
+      });
     }
   }, [phone]);
 
   const openWallet = () => {
     payMEInit();
-
-    payME.openWallet(
-      10000,
-      'a',
-      '',
-      (res) => {
-        console.log(res);
-      },
-      (message) => {
-        console.log(message);
-      },
-    );
+    payMELogin().then((res) => {
+      payME.openWallet(
+        10000,
+        'a',
+        '',
+        (res) => {
+          console.log(res);
+        },
+        (message) => {
+          console.log(message);
+        },
+      );
+    });
   };
 
   const renderContent = () => {

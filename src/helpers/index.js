@@ -7,10 +7,11 @@ export const createConnectToken = (phone) => {
   const iv = Buffer.from(ivbyte);
 
   const data = {
-    userId: '1',
+    userId: phone, //Math.floor(Math.random() * 10000000),
     phone,
     timestamp: Date.now(),
   };
+  console.log(data.userId)
 
   const cipher = crypto.createCipheriv(algorithm, '3zA9HDejj1GnyVK0', iv);
 
