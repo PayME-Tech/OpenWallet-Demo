@@ -35,7 +35,7 @@ export const Home = () => {
   const {phone, balance, colors, field} = useSelector(
     (state) => state.appReducer,
   );
-  // console.log({field, colors});
+  // console.log({phone});
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -117,6 +117,12 @@ export const Home = () => {
       );
     });
   };
+
+  useEffect(() => {
+    if(!phone) {
+      openPopupInputPhone()
+    }
+  },[])
 
   useEffect(() => {
     // console.log({connectToken: createConnectToken('0397227201')});

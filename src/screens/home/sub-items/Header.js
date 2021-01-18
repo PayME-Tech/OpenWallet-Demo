@@ -27,7 +27,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
               <ImagesSVG.IconRefresh />
             </View>
 
-            <Text style={styles.txtAccount}>{phone || ''}</Text>
+            <Text style={styles.txtAccount}>{phone || 'Chưa có'}</Text>
           </View>
         </TouchableOpacity>
 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.MainRegular,
     fontSize: 11,
     color: Colors.white,
-    height: 14,
+    // height: 14,
   },
   txtBalance: {
     fontFamily: Fonts.MainBold,

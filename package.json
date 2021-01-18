@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint .",
     "nodeify": "rn-nodeify --hack --install process,crypto,events,constant,console,stream,url,util",
-    "postinstall": "yarn nodeify"
+    "postinstall": "yarn nodeify",
+    "build_android_apk": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",

@@ -4,7 +4,7 @@ import {FIELDS} from '../../configs/variables.config';
 
 const initialState = {
   loading: false,
-  phone: '0944074831', // 0944074831
+  phone: '', // 0944074831
   balance: '0',
   colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
   field: FIELDS.DEFAULT,
