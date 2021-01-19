@@ -330,6 +330,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = JHVD9NA6RN;
 						LastSwiftMigration = 1220;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -704,19 +705,24 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C2AA27A2E2DEF70B54D8801 /* Pods-AppDemoSDK.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 43;
+				DEVELOPMENT_TEAM = JHVD9NA6RN;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDemoSDK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = vn.payme.sdk.demo;
 				PRODUCT_NAME = AppDemoSDK;
+				PROVISIONING_PROFILE_SPECIFIER = "PayME SDK Demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "AppDemoSDK-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -728,18 +734,24 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 173DB23FF6B538887C67912A /* Pods-AppDemoSDK.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 43;
+				DEVELOPMENT_TEAM = JHVD9NA6RN;
 				INFOPLIST_FILE = AppDemoSDK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = vn.payme.sdk.demo;
 				PRODUCT_NAME = AppDemoSDK;
+				PROVISIONING_PROFILE_SPECIFIER = "PayME SDK Demo";
 				SWIFT_OBJC_BRIDGING_HEADER = "AppDemoSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

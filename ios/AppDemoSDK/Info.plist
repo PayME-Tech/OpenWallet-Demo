@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>AppDemoSDK</string>
+	<string>PayME SDK Demo</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,8 +37,23 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Chúng tôi cần dùng máy ảnh để sử dụng cho app</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Chúng tôi cần sử dụng thư viện ảnh của bạn để sử dụng cho app</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SVN-BrochaBold.otf</string>
+		<string>Sarabun-Regular.ttf</string>
+		<string>SVN-BrochaSemibold.otf</string>
+		<string>Sarabun-Bold.ttf</string>
+		<string>Sarabun-Italic.ttf</string>
+		<string>Sarabun-Medium.ttf</string>
+		<string>Sarabun-SemiBold.ttf</string>
+		<string>Sarabun-Light.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -48,21 +63,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>UIAppFonts</key>
-    <array>
-      <string>SVN-BrochaBold.otf</string>
-      <string>Sarabun-Regular.ttf</string>
-      <string>SVN-BrochaSemibold.otf</string>
-      <string>Sarabun-Bold.ttf</string>
-      <string>Sarabun-Italic.ttf</string>
-      <string>Sarabun-Medium.ttf</string>
-      <string>Sarabun-SemiBold.ttf</string>
-      <string>Sarabun-Light.ttf</string>
-    </array>
 </dict>
 </plist>

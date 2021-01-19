@@ -1,0 +1,8 @@
+app_identifier("vn.payme.sdk.demo") # The bundle identifier of your app
+apple_id("paystore@mecorp.vn") # Your Apple email address
+
+itc_team_id("120586938") # App Store Connect Team ID
+team_id("JHVD9NA6RN") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
