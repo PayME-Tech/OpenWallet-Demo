@@ -24,12 +24,22 @@ import {ContentHotel} from './sub-items/ContentHotel';
 import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 
 const appToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MX0.wNtHVZ-olKe7OAkgLigkTSsLVQKv_YL9fHKzX9mn9II';
-const publicKey =
-  'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKWcehEELB4GdQ4cTLLQroLqnD3AhdKi\nwIhTJpAi1XnbfOSrW/Ebw6h1485GOAvuG/OwB+ScsfPJBoNJeNFU6J0CAwEAAQ==\n';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Njg2OH0.JyIdhQEX_Lx9CXRH4iHM8DqamLrMQJk5rhbslNW4GzY';
+
+const publicKey = `-----BEGIN PUBLIC KEY-----
+    MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKWcehEELB4GdQ4cTLLQroLqnD3AhdKi
+    wIhTJpAi1XnbfOSrW/Ebw6h1485GOAvuG/OwB+ScsfPJBoNJeNFU6J0CAwEAAQ==
+    -----END PUBLIC KEY-----`;
 const privateKey =
-  'MIIBPAIBAAJBAKWcehEELB4GdQ4cTLLQroLqnD3AhdKiwIhTJpAi1XnbfOSrW/Eb\nw6h1485GOAvuG/OwB+ScsfPJBoNJeNFU6J0CAwEAAQJBAJSfTrSCqAzyAo59Ox+m\nQ1ZdsYWBhxc2084DwTHM8QN/TZiyF4fbVYtjvyhG8ydJ37CiG7d9FY1smvNG3iDC\ndwECIQDygv2UOuR1ifLTDo4YxOs2cK3+dAUy6s54mSuGwUeo4QIhAK7SiYDyGwGo\nCwqjOdgOsQkJTGoUkDs8MST0MtmPAAs9AiEAjLT1/nBhJ9V/X3f9eF+g/bhJK+8T\nKSTV4WE1wP0Z3+ECIA9E3DWi77DpWG2JbBfu0I+VfFMXkLFbxH8RxQ8zajGRAiEA\n8Ly1xJ7UW3up25h9aa9SILBpGqWtJlNQgfVKBoabzsU=\n';
-// const configColor = ['#75255b', '#9d455f'];
+  '-----BEGIN RSA PRIVATE KEY-----\n' +
+  'MIIBOwIBAAJBAOkNeYrZOhKTS6OcPEmbdRGDRgMHIpSpepulZJGwfg1IuRM+ZFBm\n' +
+  'F6NgzicQDNXLtaO5DNjVw1o29BFoK0I6+sMCAwEAAQJAVCsGq2vaulyyI6vIZjkb\n' +
+  '5bBId8164r/2xQHNuYRJchgSJahHGk46ukgBdUKX9IEM6dAQcEUgQH+45ARSSDor\n' +
+  'mQIhAPt81zvT4oK1txaWEg7LRymY2YzB6PihjLPsQUo1DLf3AiEA7Tv005jvNbNC\n' +
+  'pRyXcfFIy70IHzVgUiwPORXQDqJhWJUCIQDeDiZR6k4n0eGe7NV3AKCOJyt4cMOP\n' +
+  'vb1qJOKlbmATkwIhALKSJfi8rpraY3kLa4fuGmCZ2qo7MFTKK29J1wGdAu99AiAQ\n' +
+  'dx6DtFyY8hoo0nuEC/BXQYPUjqpqgNOx33R4ANzm9w==\n' +
+  '-----END RSA PRIVATE KEY-----';
 
 export const Home = () => {
   const {phone, balance, colors, field} = useSelector(
@@ -106,15 +116,15 @@ export const Home = () => {
   const payMELogin = () => {
     return new Promise((resolve) => {
       payME.login(
-          (response) => {
-            console.log('response', response);
-            resolve(true);
-          },
-          (error) => {
-            console.log('error', error);
-            resolve(false);
-          },
-        );
+        (response) => {
+          console.log('response', response);
+          resolve(true);
+        },
+        (error) => {
+          console.log('error', error);
+          resolve(false);
+        },
+      );
     });
   };
 
@@ -122,7 +132,7 @@ export const Home = () => {
     if (!phone) {
       openPopupInputPhone();
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     // console.log({connectToken: createConnectToken('0397227201')});

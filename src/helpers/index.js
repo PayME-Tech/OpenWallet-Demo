@@ -13,7 +13,7 @@ export const createConnectToken = (phone) => {
   };
   console.log(data.userId)
 
-  const cipher = crypto.createCipheriv(algorithm, '3zA9HDejj1GnyVK0', iv);
+  const cipher = crypto.createCipheriv(algorithm, 'zfQpwE6iHbOeAfgX', iv);
 
   let encrypted = cipher.update(JSON.stringify(data), 'utf8', 'base64');
 
