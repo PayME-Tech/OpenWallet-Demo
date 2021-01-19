@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,20 +18,36 @@ import {updateApp} from '../../../redux/slices/app.slice';
 import {checkValidPhoneNumber} from '../../../helpers';
 
 export const PopupInputPhone = ({modalRef, phone, colors}) => {
-  const closeModal = () => modalRef?.current?.close();
+  console.log({phone});
+  const closeModal = () => {
+    modalRef?.current?.close();
+    setPhoneInput(phone);
+    setBlur(false);
+  };
   const [phoneInput, setPhoneInput] = useState(phone);
   const [blur, setBlur] = useState(false);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setPhoneInput(phone);
+  }, [phone]);
+
   const handlePressBtn = () => {
+    setBlur(true);
+
     if (checkValidPhoneNumber(phoneInput)) {
+      closeModal();
+      dispatch(updateApp({phone: phoneInput}));
+    } else if (!phoneInput) {
       closeModal();
       dispatch(updateApp({phone: phoneInput}));
     }
   };
 
   return (
-    <ModalizeTransparent ref={modalRef}>
+    <ModalizeTransparent
+      scrollViewProps={{keyboardShouldPersistTaps: 'handled'}}
+      ref={modalRef}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.txtInputPhone}>Nhập SĐT của bạn</Text>
@@ -43,6 +59,7 @@ export const PopupInputPhone = ({modalRef, phone, colors}) => {
         </Text>
 
         <TextInput
+          autoFocus
           style={styles.textInput}
           value={phoneInput}
           onChangeText={(text) => setPhoneInput(text)}
@@ -81,11 +98,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     paddingHorizontal: 10,
-    paddingVertical: 7,
+    paddingVertical: 10,
   },
   txtInputPhone: {
     fontFamily: Fonts.MainSemiBold,
@@ -104,6 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.whiteTwo,
     borderRadius: 20,
     paddingHorizontal: 15,
+    paddingVertical: 12,
     marginTop: 10,
   },
   txtBtn: {

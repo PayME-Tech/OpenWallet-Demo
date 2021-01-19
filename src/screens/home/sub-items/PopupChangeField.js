@@ -33,13 +33,13 @@ const DATA = [
     desc: 'Đặt phòng khách sạn, motel, biệt thự…',
     colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
   },
-  {
-    id: '4',
-    key: FIELDS.TRAVELTOUR,
-    title: 'Tour du lịch',
-    desc: 'Đặt phòng khách sạn, motel, biệt thự…',
-    colors: [Colors.salmon, Colors.warmPink],
-  },
+  // {
+  //   id: '4',
+  //   key: FIELDS.TRAVELTOUR,
+  //   title: 'Tour du lịch',
+  //   desc: 'Đặt phòng khách sạn, motel, biệt thự…',
+  //   colors: [Colors.salmon, Colors.warmPink],
+  // },
 ];
 
 export const PopupChangField = ({modalRef}) => {
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 2,
     borderColor: Colors.kellyGreenTwo,
-    paddingVertical: 5,
+    paddingVertical: 10,
   },
   txtHeaderTitle: {
     fontFamily: Fonts.MainSemiBold,

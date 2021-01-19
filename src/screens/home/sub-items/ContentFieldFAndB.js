@@ -141,7 +141,7 @@ export const ContentFieldFAndB = ({handlePay}) => {
       <ScrollView bounces={false}>
         <TouchableOpacity
           style={{width: '100%', paddingBottom: 20}}
-          onPress={() => Platform.OS === 'android' && handlePay?.()}>
+          onPress={() => handlePay?.()}>
           <Image
             source={require('../../../assets/images/png/bodyContent2.png')}
             style={{width: '100%'}}

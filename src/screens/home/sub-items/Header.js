@@ -1,13 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
 
 export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors}) => {
   return (
+    <>
+    <SafeAreaView />
     <View style={styles.header}>
       <View style={styles.header__top}>
         <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
@@ -20,7 +22,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
 
       <View style={styles.header__bottom}>
         <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupInputPhone?.()}>
-          <ImagesSVG.IconAvatar fill='#ffffff' />
+          <ImagesSVG.IconAvatar fill="#ffffff" />
           <View style={styles.account__right}>
             <View style={styles.account__lable__container}>
               <Text style={styles.txtAccount}>Tài khoản</Text>
@@ -41,6 +43,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
         </TouchableOpacity>
       </View>
     </View>
+    </>
   );
 };
 

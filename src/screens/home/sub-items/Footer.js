@@ -25,14 +25,13 @@ export const Footer = ({colors}) => {
         </View>
       </View>
 
-      <SafeAreaView />
+      <SafeAreaView style={{backgroundColor: '#fff'}} />
     </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
     width: '100%',
     bottom: 0,
     flexDirection: 'row',

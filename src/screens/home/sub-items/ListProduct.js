@@ -51,7 +51,7 @@ export const ListProduct = ({handlePay}) => {
               style={{marginTop: 10, borderRadius: 20}}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => Platform.OS === 'android' && handlePay?.()}>
+                onPress={() => handlePay?.()}>
                 <Text style={styles.txtBtn}>Thanh toán ngay</Text>
               </TouchableOpacity>
             </LinearGradient>

@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
 import React, {useEffect, useRef} from 'react';
-import {Alert, StyleSheet, View} from 'react-native';
+import {Alert, Platform, SafeAreaView, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import {Header} from './sub-items/Header';
@@ -57,9 +57,9 @@ export const Home = () => {
           console.log(res);
         },
         (message) => {
-          console.log(message);
+          console.log({message});
           Alert.alert(
-            message,
+            'Tài khoản chưa kích hoạt',
             'Bạn có muốn kích hoạt không?',
             [
               {
@@ -106,23 +106,23 @@ export const Home = () => {
   const payMELogin = () => {
     return new Promise((resolve) => {
       payME.login(
-        (response) => {
-          console.log('response', response);
-          resolve(true);
-        },
-        (error) => {
-          console.log('error', error);
-          resolve(false);
-        },
-      );
+          (response) => {
+            console.log('response', response);
+            resolve(true);
+          },
+          (error) => {
+            console.log('error', error);
+            resolve(false);
+          },
+        );
     });
   };
 
   useEffect(() => {
-    if(!phone) {
-      openPopupInputPhone()
+    if (!phone) {
+      openPopupInputPhone();
     }
-  },[])
+  },[]);
 
   useEffect(() => {
     // console.log({connectToken: createConnectToken('0397227201')});
@@ -150,6 +150,8 @@ export const Home = () => {
           },
         );
       });
+    } else if (!phone) {
+      dispatch(updateApp({balance: '0'}));
     }
   }, [phone]);
 
@@ -198,7 +200,6 @@ export const Home = () => {
           style={styles.linearGradient}
         />
       </View>
-
       <Header
         openPopupInputPhone={openPopupInputPhone}
         openPopupChangField={openPopupChangField}
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: '100%',
-    height: '41%',
+    height: 280,
   },
   linearGradient: {
     height: '100%',

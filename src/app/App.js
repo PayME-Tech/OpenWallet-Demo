@@ -23,9 +23,6 @@ const App = () => {
             translucent
             backgroundColor="transparent"
           />
-
-          <SafeAreaView />
-
           <NavApp />
         </>
       </PersistGate>

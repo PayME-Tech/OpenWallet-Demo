@@ -97,7 +97,9 @@ export const ContentSuperMarket = ({handlePay}) => {
       </ScrollView> */}
 
       <ScrollView bounces={false}>
-        <TouchableOpacity style={{width: '100%', paddingBottom: 20}} onPress={() => Platform.OS === 'android' && handlePay?.()}>
+        <TouchableOpacity
+          style={{width: '100%', paddingBottom: 20}}
+          onPress={() => handlePay?.()}>
           <Image
             source={require('../../../assets/images/png/contentBody.png')}
             style={{width: '100%'}}
