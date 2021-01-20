@@ -61,41 +61,43 @@ export const Home = () => {
       payME.pay(
         299000,
         'a',
-        'b',
+        Date.now().toString(),
         '',
         (res) => {
           console.log(res);
         },
         (message) => {
           console.log({message});
-          Alert.alert(
-            'Tài khoản chưa kích hoạt',
-            'Bạn có muốn kích hoạt không?',
-            [
-              {
-                text: 'Huỷ',
-                onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-              },
-              {
-                text: 'Đồng ý',
-                onPress: () => {
-                  payME.openWallet(
-                    10000,
-                    'a',
-                    '',
-                    (res) => {
-                      console.log(res);
-                    },
-                    (message) => {
-                      console.log(message);
-                    },
-                  );
+          if (message === 'Tài khoản chưa kích hoạt') {
+            Alert.alert(
+              'Tài khoản chưa kích hoạt',
+              'Bạn có muốn kích hoạt không?',
+              [
+                {
+                  text: 'Huỷ',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
                 },
-              },
-            ],
-            {cancelable: false},
-          );
+                {
+                  text: 'Đồng ý',
+                  onPress: () => {
+                    payME.openWallet(
+                      10000,
+                      'a',
+                      '',
+                      (res) => {
+                        console.log(res);
+                      },
+                      (message) => {
+                        console.log(message);
+                      },
+                    );
+                  },
+                },
+              ],
+              {cancelable: false},
+            );
+          }
         },
       );
     });
