@@ -67,8 +67,8 @@ export const Home = () => {
           console.log(res);
         },
         (message) => {
-          console.log({message});
-          if (message === 'Tài khoản chưa kích hoạt') {
+          console.log(message);
+          if (message === 'Tài khoản chưa kích hoạt' || message?.message === 'Vui lòng mở webview để kích hoạt hoặc định danh tài khoản') {
             Alert.alert(
               'Tài khoản chưa kích hoạt',
               'Bạn có muốn kích hoạt không?',
