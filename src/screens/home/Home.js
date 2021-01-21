@@ -97,6 +97,8 @@ export const Home = () => {
               ],
               {cancelable: false},
             );
+          } else if (message?.message === 'Vui lòng kiểm tra lại số dư tài khoản') {
+            Alert.alert('Vui lòng kiểm tra lại số dư tài khoản','');
           }
         },
       );
