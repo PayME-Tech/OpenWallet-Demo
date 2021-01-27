@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Header} from './sub-items/Header';
 import {Footer} from './sub-items/Footer';
 import {PopupInputPhone} from './sub-items/PopupInputPhone';
-import payME from 'react-native-payme-sdk';
+import payME, {ENV} from 'react-native-payme-sdk';
 import {
   checkValidPhoneNumber,
   createConnectToken,
@@ -58,50 +58,58 @@ export const Home = () => {
   const handlePay = () => {
     payMEInit();
     payMELogin().then((res) => {
-      payME.pay(
-        299000,
-        'a',
-        Date.now().toString(),
-        '',
-        (res) => {
-          console.log(res);
-        },
-        (message) => {
-          console.log(message);
-          if (message === 'Tài khoản chưa kích hoạt' || message?.message === 'Vui lòng mở webview để kích hoạt hoặc định danh tài khoản') {
-            Alert.alert(
-              'Tài khoản chưa kích hoạt',
-              'Bạn có muốn kích hoạt không?',
-              [
-                {
-                  text: 'Huỷ',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-                },
-                {
-                  text: 'Đồng ý',
-                  onPress: () => {
-                    payME.openWallet(
-                      10000,
-                      'a',
-                      '',
-                      (res) => {
-                        console.log(res);
-                      },
-                      (message) => {
-                        console.log(message);
-                      },
-                    );
+      if (res) {
+        payME.pay(
+          299000,
+          'note',
+          Date.now().toString(),
+          6868,
+          'extractData',
+          (res) => {
+            console.log(res);
+          },
+          (error) => {
+            console.log(error);
+            if (error?.code === -4) {
+              Alert.alert(
+                'Tài khoản chưa kích hoạt',
+                'Bạn có muốn kích hoạt không?',
+                [
+                  {
+                    text: 'Huỷ',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
                   },
-                },
-              ],
-              {cancelable: false},
-            );
-          } else if (message?.message === 'Vui lòng kiểm tra lại số dư tài khoản') {
-            Alert.alert('Vui lòng kiểm tra lại số dư tài khoản','');
-          }
-        },
-      );
+                  {
+                    text: 'Đồng ý',
+                    onPress: () => {
+                      payME.openWallet(
+                        10000,
+                        'a',
+                        '',
+                        (res) => {
+                          console.log(res);
+                        },
+                        (message) => {
+                          console.log(message);
+                        },
+                      );
+                    },
+                  },
+                ],
+                {cancelable: false},
+              );
+            } else if (error?.code === -6) {
+              Alert.alert(error?.message || 'Vui lòng kiểm tra lại số dư tài khoản','');
+            } else if (error?.code === -8) {
+              // Alert.alert(error?.message || 'dong modal','');
+            }
+            else {
+              Alert.alert('Error','');
+            }
+          },
+        );
+      }
     });
   };
 
@@ -112,9 +120,8 @@ export const Home = () => {
       publicKey,
       connectToken,
       privateKey,
-      configColor, // change here
-      'sandbox',
-      false,
+      configColor,
+      ENV.SANDBOX
     );
   };
   const payMELogin = () => {
@@ -126,6 +133,12 @@ export const Home = () => {
         },
         (error) => {
           console.log('error', error);
+          if(error?.code === 401) {
+            Alert.alert(error?.message || 'Số điện thoại không hợp lệ!','');
+          }
+          else {
+            Alert.alert(error?.message || 'Error','');
+          }
           resolve(false);
         },
       );
@@ -146,23 +159,26 @@ export const Home = () => {
       payMEInit();
 
       payMELogin().then((res) => {
-        console.log({res});
-        payME.getWalletInfo(
-          (response) => {
-            console.log('response111111111111', response);
-            console.log(formatNumber(`${response?.Wallet?.balance || 0}`));
-            dispatch(
-              updateApp({
-                balance: formatNumber(`${response?.Wallet?.balance || 0}`),
-              }) || '0',
-            );
-          },
-          (error) => {
-            console.log('error2222222222', error);
-            dispatch(updateApp({balance: '0'}));
-            // alert('Thông tin xác thực không hợp lệ');
-          },
-        );
+        if (res) {
+          payME.getWalletInfo(
+            (response) => {
+              console.log('response111111111111', response);
+              dispatch(
+                updateApp({
+                  balance: formatNumber(`${response?.Wallet?.balance || 0}`),
+                }) || '0',
+              );
+            },
+            (error) => {
+              console.log('error2222222222', error);
+              dispatch(updateApp({balance: '0'}));
+              // alert('Thông tin xác thực không hợp lệ');
+            },
+          );
+        }else {
+          dispatch(updateApp({balance: '0'}));
+        }
+       
       });
     } else if (!phone) {
       dispatch(updateApp({balance: '0'}));
@@ -172,17 +188,19 @@ export const Home = () => {
   const openWallet = () => {
     payMEInit();
     payMELogin().then((res) => {
-      payME.openWallet(
-        10000,
-        'a',
-        '',
-        (res) => {
-          console.log(res);
-        },
-        (message) => {
-          console.log(message);
-        },
-      );
+      if (res) {
+        payME.openWallet(
+          10000,
+          'a',
+          '',
+          (res) => {
+            console.log(res);
+          },
+          (message) => {
+            console.log(message);
+          },
+        );
+      }
     });
   };
 
