@@ -135,6 +135,9 @@ export const Home = () => {
           console.log('error', error);
           if(error?.code === 401) {
             Alert.alert(error?.message || 'Số điện thoại không hợp lệ!','');
+          } else if (error?.code === -4) {
+            resolve(true);
+            return;
           }
           else {
             Alert.alert(error?.message || 'Error','');
