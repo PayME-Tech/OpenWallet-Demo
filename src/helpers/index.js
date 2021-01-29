@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-export const createConnectToken = (phone) => {
+export const createConnectToken = (phone, secretKey) => {
   const algorithm = 'aes-128-cbc'; // key is 16 length
   const ivbyte = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   // eslint-disable-next-line no-undef
@@ -11,9 +11,9 @@ export const createConnectToken = (phone) => {
     phone,
     timestamp: Date.now(),
   };
-  console.log(data.userId)
+  // console.log(data.userId)
 
-  const cipher = crypto.createCipheriv(algorithm, 'zfQpwE6iHbOeAfgX', iv);
+  const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
   let encrypted = cipher.update(JSON.stringify(data), 'utf8', 'base64');
 

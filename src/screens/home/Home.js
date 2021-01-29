@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
-import React, {useEffect, useRef} from 'react';
-import {Alert, Platform, SafeAreaView, StyleSheet, View} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';
 import LinearGradient from 'react-native-linear-gradient';
 import {Header} from './sub-items/Header';
 import {Footer} from './sub-items/Footer';
 import {PopupInputPhone} from './sub-items/PopupInputPhone';
-import payME, {ENV} from 'react-native-payme-sdk';
+import payME from 'react-native-payme-sdk';
 import {
   checkValidPhoneNumber,
   createConnectToken,
@@ -22,24 +22,7 @@ import {ContentDefault} from './sub-items/ContentDefault';
 import {ContentFieldFAndB} from './sub-items/ContentFieldFAndB';
 import {ContentHotel} from './sub-items/ContentHotel';
 import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
-
-const appToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Njg2OH0.JyIdhQEX_Lx9CXRH4iHM8DqamLrMQJk5rhbslNW4GzY';
-
-const publicKey = `-----BEGIN PUBLIC KEY-----
-    MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKWcehEELB4GdQ4cTLLQroLqnD3AhdKi
-    wIhTJpAi1XnbfOSrW/Ebw6h1485GOAvuG/OwB+ScsfPJBoNJeNFU6J0CAwEAAQ==
-    -----END PUBLIC KEY-----`;
-const privateKey =
-  '-----BEGIN RSA PRIVATE KEY-----\n' +
-  'MIIBOwIBAAJBAOkNeYrZOhKTS6OcPEmbdRGDRgMHIpSpepulZJGwfg1IuRM+ZFBm\n' +
-  'F6NgzicQDNXLtaO5DNjVw1o29BFoK0I6+sMCAwEAAQJAVCsGq2vaulyyI6vIZjkb\n' +
-  '5bBId8164r/2xQHNuYRJchgSJahHGk46ukgBdUKX9IEM6dAQcEUgQH+45ARSSDor\n' +
-  'mQIhAPt81zvT4oK1txaWEg7LRymY2YzB6PihjLPsQUo1DLf3AiEA7Tv005jvNbNC\n' +
-  'pRyXcfFIy70IHzVgUiwPORXQDqJhWJUCIQDeDiZR6k4n0eGe7NV3AKCOJyt4cMOP\n' +
-  'vb1qJOKlbmATkwIhALKSJfi8rpraY3kLa4fuGmCZ2qo7MFTKK29J1wGdAu99AiAQ\n' +
-  'dx6DtFyY8hoo0nuEC/BXQYPUjqpqgNOx33R4ANzm9w==\n' +
-  '-----END RSA PRIVATE KEY-----';
+import { APP_ENV } from '../../configs/app.config';
 
 export const Home = () => {
   const {phone, balance, colors, field} = useSelector(
@@ -54,6 +37,15 @@ export const Home = () => {
 
   const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
+
+  const [appEnv, setAppEnv] = useState('SANDBOX');
+
+  const switchEnv = () => {
+    const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
+    setAppEnv(newEnv);
+    Alert.alert(`ENV: ${newEnv}`, '');
+  }
+
 
   const handlePay = () => {
     payMEInit();
@@ -114,16 +106,18 @@ export const Home = () => {
   };
 
   const payMEInit = () => {
-    const connectToken = createConnectToken(phone);
+    const connectToken = createConnectToken(phone, APP_ENV[appEnv].secretKey);
+    
     payME.init(
-      appToken,
-      publicKey,
+      APP_ENV[appEnv].appToken,
+      APP_ENV[appEnv].publicKey,
       connectToken,
-      privateKey,
+      APP_ENV[appEnv].privateKey,
       configColor,
-      ENV.SANDBOX
+      APP_ENV[appEnv].env
     );
   };
+
   const payMELogin = () => {
     return new Promise((resolve) => {
       payME.login(
@@ -153,6 +147,10 @@ export const Home = () => {
       openPopupInputPhone();
     }
   }, []);
+
+  useEffect(() => {
+    console.log(`ENV: ${appEnv}`);
+  }, [appEnv]);
 
   useEffect(() => {
     // console.log({connectToken: createConnectToken('0397227201')});
@@ -242,6 +240,7 @@ export const Home = () => {
         balance={balance}
         openWallet={openWallet}
         colors={colors}
+        switchEnv={switchEnv}
       />
 
       {renderContent()}

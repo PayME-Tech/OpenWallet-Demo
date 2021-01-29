@@ -6,13 +6,15 @@ import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
 
-export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors}) => {
+export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors, switchEnv}) => {
   return (
     <>
     <SafeAreaView />
     <View style={styles.header}>
       <View style={styles.header__top}>
-        <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
+        <TouchableOpacity activeOpacity={1} delayLongPress={4000} onLongPress={() => switchEnv?.()}>
+          <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.changeField__container} onPress={() => openPopupChangField?.()}>
           <Text style={styles.txtChangeField}>Đổi lĩnh vực</Text>
