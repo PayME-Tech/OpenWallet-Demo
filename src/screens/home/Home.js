@@ -25,10 +25,10 @@ import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 import { APP_ENV } from '../../configs/app.config';
 
 export const Home = () => {
-  const {phone, balance, colors, field} = useSelector(
+  const {phone, balance, colors, field, appEnv} = useSelector(
     (state) => state.appReducer,
   );
-  // console.log({phone});
+  // console.log('appEnv11111111111111', appEnv);
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -38,11 +38,11 @@ export const Home = () => {
   const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
 
-  const [appEnv, setAppEnv] = useState('SANDBOX');
+  // const [appEnv, setAppEnv] = useState('PRODUCTION');
 
   const switchEnv = () => {
     const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
-    setAppEnv(newEnv);
+    dispatch(updateApp({appEnv: newEnv}))
     Alert.alert(`ENV: ${newEnv}`, '');
   }
 
@@ -107,10 +107,12 @@ export const Home = () => {
 
   const payMEInit = () => {
     const connectToken = createConnectToken(phone, APP_ENV[appEnv].secretKey);
+    // console.log('connectToken', connectToken)
     
     payME.init(
       APP_ENV[appEnv].appToken,
       APP_ENV[appEnv].publicKey,
+      // appEnv === 'SANDBOX' ?  createConnectToken(phone, APP_ENV[appEnv].secretKey) : 'W7W6rdSt4IkW2aOhOKmdZgJpsIBg5/HlPu7G8o9VzAzrz/KMqPyyX4QszKKyxw36TYYN1HIrt9FuS/gfa5Bbaw==',
       connectToken,
       APP_ENV[appEnv].privateKey,
       configColor,
@@ -153,8 +155,8 @@ export const Home = () => {
   }, [appEnv]);
 
   useEffect(() => {
-    // console.log({connectToken: createConnectToken('0397227201')});
-
+    // console.log({connectToken: createConnectToken('0795550300', APP_ENV[appEnv].secretKey)});
+    // console.log('env1111111111111', APP_ENV[appEnv].env)
     if (checkValidPhoneNumber(phone)) {
       //do sonmething
       payMEInit();

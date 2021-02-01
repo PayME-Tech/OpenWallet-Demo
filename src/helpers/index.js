@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 export const createConnectToken = (phone, secretKey) => {
-  const algorithm = 'aes-128-cbc'; // key is 16 length
+  const algorithm = `aes-${secretKey.length === 16 ? 128 : 256}-cbc`; // key is 16 length
   const ivbyte = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   // eslint-disable-next-line no-undef
   const iv = Buffer.from(ivbyte);
