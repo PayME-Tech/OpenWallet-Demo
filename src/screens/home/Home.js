@@ -44,7 +44,7 @@ export const Home = () => {
     const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
     dispatch(updateApp({appEnv: newEnv}))
     Alert.alert(`ENV: ${newEnv}`, '');
-  }
+  };
 
 
   const handlePay = () => {
@@ -59,6 +59,7 @@ export const Home = () => {
           'extractData',
           (res) => {
             console.log(res);
+            getWalletInfo();
           },
           (error) => {
             console.log(error);
@@ -129,11 +130,8 @@ export const Home = () => {
         },
         (error) => {
           console.log('error', error);
-          if(error?.code === 401) {
+          if (error?.code === 401) {
             Alert.alert(error?.message || 'Số điện thoại không hợp lệ!','');
-          } else if (error?.code === -4) {
-            resolve(true);
-            return;
           }
           else {
             Alert.alert(error?.message || 'Error','');
@@ -142,6 +140,24 @@ export const Home = () => {
         },
       );
     });
+  };
+
+  const getWalletInfo = () => {
+    payME.getWalletInfo(
+      (response) => {
+        console.log('response getWalletInfo', response);
+        dispatch(
+          updateApp({
+            balance: formatNumber(`${response?.Wallet?.balance || 0}`) || '0',
+          })
+        );
+      },
+      (error) => {
+        console.log('error getWalletInfo', error);
+        dispatch(updateApp({balance: '0'}));
+        // alert('Thông tin xác thực không hợp lệ');
+      },
+    );
   };
 
   useEffect(() => {
@@ -163,22 +179,8 @@ export const Home = () => {
 
       payMELogin().then((res) => {
         if (res) {
-          payME.getWalletInfo(
-            (response) => {
-              console.log('response111111111111', response);
-              dispatch(
-                updateApp({
-                  balance: formatNumber(`${response?.Wallet?.balance || 0}`),
-                }) || '0',
-              );
-            },
-            (error) => {
-              console.log('error2222222222', error);
-              dispatch(updateApp({balance: '0'}));
-              // alert('Thông tin xác thực không hợp lệ');
-            },
-          );
-        }else {
+          getWalletInfo();
+        } else {
           dispatch(updateApp({balance: '0'}));
         }
        
