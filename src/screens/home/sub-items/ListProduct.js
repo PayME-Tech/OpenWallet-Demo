@@ -47,7 +47,7 @@ export const ListProduct = ({handlePay}) => {
             <LinearGradient
               start={{x: 0.0, y: 0.25}}
               end={{x: 0.5, y: 1.0}}
-              colors={[Colors.lightishBlue, Colors.purplyBlue]}
+              colors={[Colors.vibrantGreen, Colors.emeraldGreenThree]}
               style={{marginTop: 10, borderRadius: 20}}>
               <TouchableOpacity
                 style={styles.button}

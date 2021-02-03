@@ -6,7 +6,7 @@ const initialState = {
   loading: false,
   phone: '', // 0944074831
   balance: '0',
-  colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
+  colors: [Colors.vibrantGreen, Colors.emeraldGreenThree],
   field: FIELDS.DEFAULT,
   appEnv: 'PRODUCTION',
 };

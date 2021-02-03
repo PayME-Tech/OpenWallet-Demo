@@ -94,4 +94,6 @@ export const Colors = {
   butterscotch: '#f9c033',
   lightishRed: '#ff3541',
   purpleishBlueTwo: '#583ef5',
+  orangeYellow: '#ffa000',
+  brightOrange: '#ff6700',
 };

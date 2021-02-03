@@ -6371,10 +6371,10 @@ react-native-modalize@^2.0.8:
   resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.8.tgz"
   integrity sha512-OKdpFVExEe4YM2uFHL/aStS9p0JaC6gBupjaW1QVHkGq22T2ASYwkhDvTnMS8BLOLWPx2fC3xEBzOcn2rh7EYw==
 
-react-native-payme-sdk@^0.1.38:
-  version "0.1.38"
-  resolved "https://registry.yarnpkg.com/react-native-payme-sdk/-/react-native-payme-sdk-0.1.38.tgz#c43ad7335eb4b878fd5d0b90c22a246dea1b49a8"
-  integrity sha512-K0yllMtGMF5WSZq3NSV2Zzu64Lccaz+mpKbMJ9JGhOomuf5SJg9VCd+t7kN4kHayqltzB+T5AqhtMR1EomT8sQ==
+react-native-payme-sdk@^0.1.39:
+  version "0.1.39"
+  resolved "https://registry.yarnpkg.com/react-native-payme-sdk/-/react-native-payme-sdk-0.1.39.tgz#75b22d85b06d71b08d8075163b3041d2776bd681"
+  integrity sha512-DxMAXW6SKmHIY5otY51TCc/fJbR/DHxwTNA3mENKIQwKdm/vvxyNwC/EZgADY+8I6jAkWfdUo5BV2sCwzeWITw==
   dependencies:
     "@react-native-community/async-storage" "^1.12.0"
     axios "^0.20.0"
@@ -6409,6 +6409,11 @@ react-native-screens@^2.16.1:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.16.1.tgz"
   integrity sha512-WZ7m0sBDVaHbBnlHxwQnUlI6KNfQKHq+Unfw+VBuAlnSXvT+aw6Bb/K2bUlHzBgvrPjwY3Spc7ZERFuTwRLLwg==
+
+react-native-splash-screen@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
+  integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
 react-native-svg-transformer@^0.14.3:
   version "0.14.3"

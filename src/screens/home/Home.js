@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Header} from './sub-items/Header';
 import {Footer} from './sub-items/Footer';
 import {PopupInputPhone} from './sub-items/PopupInputPhone';
-import payME from 'react-native-payme-sdk';
+import payME, {LANGUAGES} from 'react-native-payme-sdk';
 import {
   checkValidPhoneNumber,
   createConnectToken,
@@ -42,7 +42,7 @@ export const Home = () => {
 
   const switchEnv = () => {
     const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
-    dispatch(updateApp({appEnv: newEnv}))
+    dispatch(updateApp({appEnv: newEnv}));
     Alert.alert(`ENV: ${newEnv}`, '');
   };
 
@@ -57,6 +57,7 @@ export const Home = () => {
           Date.now().toString(),
           6868,
           'extractData',
+          true,
           (res) => {
             console.log(res);
             getWalletInfo();
@@ -113,10 +114,10 @@ export const Home = () => {
     payME.init(
       APP_ENV[appEnv].appToken,
       APP_ENV[appEnv].publicKey,
-      // appEnv === 'SANDBOX' ?  createConnectToken(phone, APP_ENV[appEnv].secretKey) : 'W7W6rdSt4IkW2aOhOKmdZgJpsIBg5/HlPu7G8o9VzAzrz/KMqPyyX4QszKKyxw36TYYN1HIrt9FuS/gfa5Bbaw==',
       connectToken,
       APP_ENV[appEnv].privateKey,
       configColor,
+      LANGUAGES.VN,
       APP_ENV[appEnv].env
     );
   };
@@ -168,6 +169,16 @@ export const Home = () => {
 
   useEffect(() => {
     console.log(`ENV: ${appEnv}`);
+    payMEInit();
+
+      payMELogin().then((res) => {
+        if (res) {
+          getWalletInfo();
+        } else {
+          dispatch(updateApp({balance: '0'}));
+        }
+       
+      });
   }, [appEnv]);
 
   useEffect(() => {

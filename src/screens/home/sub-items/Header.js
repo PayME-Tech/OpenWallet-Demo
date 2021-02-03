@@ -12,7 +12,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
     <SafeAreaView />
     <View style={styles.header}>
       <View style={styles.header__top}>
-        <TouchableOpacity activeOpacity={1} delayLongPress={4000} onLongPress={() => switchEnv?.()}>
+        <TouchableOpacity activeOpacity={1} delayLongPress={3000} onLongPress={() => switchEnv?.()}>
           <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
         </TouchableOpacity>
 

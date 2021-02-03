@@ -7,6 +7,7 @@ import {TouchableOpacity} from 'react-native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import store, {persistor} from '../redux/redux.store';
+import SplashScreen from 'react-native-splash-screen';
 
 TouchableOpacity.defaultProps = {
   ...TouchableOpacity.defaultProps,
@@ -14,6 +15,10 @@ TouchableOpacity.defaultProps = {
 };
 
 const App = () => {
+  React.useEffect(() => {
+    SplashScreen.hide();
+  });
+  
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

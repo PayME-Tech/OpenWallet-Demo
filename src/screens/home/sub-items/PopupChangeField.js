@@ -24,14 +24,14 @@ const DATA = [
     key: FIELDS.FIELD_FANDB,
     title: 'Lĩnh vực F&B',
     desc: 'Ngành thực phẩm và dịch vụ ăn uống',
-    colors: [Colors.vibrantGreen, Colors.emeraldGreenThree],
+    colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
   },
   {
     id: '3',
     key: FIELDS.HOTEL,
     title: 'Khách sạn, nghỉ dưỡng',
     desc: 'Đặt phòng khách sạn, motel, biệt thự…',
-    colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
+    colors: [Colors.orangeYellow, Colors.brightOrange],
   },
   // {
   //   id: '4',
@@ -50,7 +50,7 @@ export const PopupChangField = ({modalRef}) => {
   const handlePressDefault = () => {
     dispatch(
       updateApp({
-        colors: [Colors.lightishBlue, Colors.purplyBlueTwo],
+        colors: [Colors.vibrantGreen, Colors.emeraldGreenThree],
         field: FIELDS.DEFAULT,
       }),
     );
