@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import NavApp from '../navigation';
 import {TouchableOpacity} from 'react-native';
 
@@ -17,8 +17,8 @@ TouchableOpacity.defaultProps = {
 const App = () => {
   React.useEffect(() => {
     SplashScreen.hide();
-  });
-  
+  }, []);
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
