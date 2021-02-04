@@ -5,17 +5,12 @@ export const AALSAQTYNVAKHSPOU = 'AALSAQTYNVAKHSPOU';
 export const APP_ENV = {
   PRODUCTION: {
     appToken:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6NCwiaWF0IjoxNjExOTAzNjU3fQ.GfTRq6gvO0rU0XHx6JksJXIB1hireYyKaX92mTnMb64',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6NSwiaWF0IjoxNjEyNDMzNDI0fQ.rNl0i-yAEk4MOjcT5OAk7gxnxyAzPQVx9dHCiiH86rM',
 
     publicKey:
       '-----BEGIN PUBLIC KEY-----\n' +
-      'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmXR5qmL2lLfInmwGYsB2\n' +
-      'WIgoQobh6UQ0tJ3uhzhBSFkvIHqIdrwBAKURe/1S5ZqplZwb91H+hgEJVyVaBPhW\n' +
-      'H6TcOG01iBTQkodwUin/JT472G/bWkwbkoM8n9g5uDDG9udd9aB4YJeXQg3vOnxf\n' +
-      '7bipFW/Hd3155CWYcRZEFG7Q7GGHpuGj8UHV4nIzxhcOpAVhtAyeWI0+h9M9LH1Y\n' +
-      'RPWOOBcweNNbKjDJf1QhsWr1CtuRP4Zeh9Sg+nGVbuKcfjnZQt+ABD83a4cniSzq\n' +
-      'Qqe+r2lGubmumo+XQpsJPTg9R/ODmKrkd++6jrHWJbqeITD9xRpDzvgGiWUhhc9F\n' +
-      'KQIDAQAB\n' +
+      'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIwGH/c+jndwseq5JCU9SuRSbrT8IMiZ\n' +
+      'DFyA26aX6xkz42keW2sLRkHo4miAHvc+q91omHJEQXIfcAj2cA1AC6MCAwEAAQ==\n' +
       '-----END PUBLIC KEY-----',
 
     privateKey:
@@ -29,7 +24,7 @@ export const APP_ENV = {
       'A8pNN3/HewlpwTGfoNE8zCupzYQrYZ3ld8XPGeQ=\n' +
       '-----END RSA PRIVATE KEY-----',
     env: ENV.PRODUCTION,
-    secretKey: '240c70d60d85a4c1bef302ca7a38bd8c',
+    secretKey: '27d616faf57ae6db2f052f561de80e83',
   },
 
   SANDBOX: {
