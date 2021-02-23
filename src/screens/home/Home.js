@@ -109,7 +109,7 @@ export const Home = () => {
 
   const payMEInit = () => {
     const connectToken = createConnectToken(phone, APP_ENV[appEnv].secretKey);
-    // console.log('connectToken', connectToken)
+    console.log('connectToken', connectToken)
     
     payME.init(
       APP_ENV[appEnv].appToken,
