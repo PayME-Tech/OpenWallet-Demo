@@ -99,7 +99,8 @@ export const Home = () => {
               // Alert.alert(error?.message || 'dong modal','');
             }
             else {
-              Alert.alert('Error','');
+              // Alert.alert(error?.message || 'Error','');
+              Alert.alert(`Error code ${error?.code || ''}`, `${error?.message}` || '');
             }
           },
         );
@@ -135,7 +136,7 @@ export const Home = () => {
             Alert.alert(error?.message || 'Số điện thoại không hợp lệ!','');
           }
           else {
-            Alert.alert(error?.message || 'Error','');
+            Alert.alert(`Error code ${error?.code || ''}`, `${error?.message}` || '');
           }
           resolve(false);
         },
