@@ -52,10 +52,10 @@ export const Home = () => {
     payMELogin().then((res) => {
       if (res) {
         payME.pay(
-          299000,
+          appEnv === 'SANDBOX' ? 299000 : 10000,
           'note',
-          Date.now().toString(),
-          6868,
+          new Date().toISOString(),
+          appEnv === 'SANDBOX' ? 37048160 : 57956431,
           'extractData',
           true,
           (res) => {
