@@ -8,7 +8,7 @@ const initialState = {
   balance: '0',
   colors: [Colors.vibrantGreen, Colors.emeraldGreenThree],
   field: FIELDS.DEFAULT,
-  appEnv: 'PRODUCTION',
+  appEnv: 'SANDBOX',
 };
 
 const appSlice = createSlice({
