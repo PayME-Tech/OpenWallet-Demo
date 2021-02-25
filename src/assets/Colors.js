@@ -96,4 +96,7 @@ export const Colors = {
   purpleishBlueTwo: '#583ef5',
   orangeYellow: '#ffa000',
   brightOrange: '#ff6700',
+  blackFifteen: 'rgb(53, 53, 53)',
+  kellyGreenThree: 'rgb(1, 116, 29)',
+  emeraldGreenFour: 'rgb(4, 143, 27)',
 };

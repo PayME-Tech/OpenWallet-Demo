@@ -6,7 +6,7 @@ import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
 
-export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors, switchEnv, switchShowLog}) => {
+export const Header = ({openPopupChangePhone, openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors, switchEnv, switchShowLog}) => {
   return (
     <>
     <SafeAreaView />
@@ -23,7 +23,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
       </View>
 
       <View style={styles.header__bottom}>
-        <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupInputPhone?.()}>
+        <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupChangePhone?.()}>
           <ImagesSVG.IconAvatar fill="#ffffff" />
           <View style={styles.account__right}>
             <View style={styles.account__lable__container}>

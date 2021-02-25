@@ -34,4 +34,5 @@ export const ImagesSVG = {
 
 export const Images = {
   BannerSample: require('./images/png/bannerSample.png'),
+  Artwork: require('./images/png/artwork.png'),
 };

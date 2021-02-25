@@ -1,6 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
+//withShowLog: (BOOL)showLog)
+//withShowLog showLog: Bool
+//showLog ? 1 : 0
 import React, {useEffect, useRef, useState} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';
@@ -25,6 +28,7 @@ import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 import { APP_ENV } from '../../configs/app.config';
 
 import { getUniqueId, getUserAgent } from 'react-native-device-info';
+import { PopupChangePhone } from './sub-items/PopupChangePhone';
 
 export const Home = () => {
   const {phone, balance, colors, field, appEnv, showLog} = useSelector(
@@ -36,9 +40,11 @@ export const Home = () => {
 
   const popupInputPhoneRef = useRef(null);
   const popupChangFieldRef = useRef(null);
+  const popupChangePhoneRef = useRef(null);
 
   const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
+  const openPopupChangePhone = () => popupChangePhoneRef?.current?.open();
 
   // const [appEnv, setAppEnv] = useState('PRODUCTION');
 
@@ -275,6 +281,7 @@ export const Home = () => {
         colors={colors}
         switchEnv={switchEnv}
         switchShowLog={switchShowLog}
+        openPopupChangePhone={openPopupChangePhone}
       />
 
       {renderContent()}
@@ -287,6 +294,8 @@ export const Home = () => {
         colors={colors}
       />
       <PopupChangField modalRef={popupChangFieldRef} />
+
+      <PopupChangePhone modalRef={popupChangePhoneRef}  />
     </Layout>
   );
 };
