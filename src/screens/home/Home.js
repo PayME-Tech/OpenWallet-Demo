@@ -24,11 +24,13 @@ import {ContentHotel} from './sub-items/ContentHotel';
 import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 import { APP_ENV } from '../../configs/app.config';
 
+import { getUniqueId, getUserAgent } from 'react-native-device-info';
+
 export const Home = () => {
-  const {phone, balance, colors, field, appEnv} = useSelector(
+  const {phone, balance, colors, field, appEnv, showLog} = useSelector(
     (state) => state.appReducer,
   );
-  // console.log('appEnv11111111111111', appEnv);
+  console.log('appEnv11111111111111', showLog);
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -46,6 +48,20 @@ export const Home = () => {
     Alert.alert(`ENV: ${newEnv}`, '');
   };
 
+  const switchShowLog = () => {
+    const newShowLog = !showLog;
+    dispatch(updateApp({showLog: newShowLog}));
+    Alert.alert(`showLog: ${newShowLog}`, '');
+  };
+
+  // useEffect(() => {
+  //   console.log('object', getUniqueId());
+    
+  //   (async() => {
+  //     const r = await getUserAgent();
+  //     console.log('rrrrrrrrrrrr', r);
+  //   })()
+  // }, [])
 
   const handlePay = () => {
     payMEInit();
@@ -119,7 +135,8 @@ export const Home = () => {
       APP_ENV[appEnv].privateKey,
       configColor,
       LANGUAGES.VN,
-      APP_ENV[appEnv].env
+      APP_ENV[appEnv].env,
+      showLog
     );
   };
 
@@ -257,6 +274,7 @@ export const Home = () => {
         openWallet={openWallet}
         colors={colors}
         switchEnv={switchEnv}
+        switchShowLog={switchShowLog}
       />
 
       {renderContent()}

@@ -9,6 +9,7 @@ const initialState = {
   colors: [Colors.vibrantGreen, Colors.emeraldGreenThree],
   field: FIELDS.DEFAULT,
   appEnv: 'SANDBOX',
+  showLog: false,
 };
 
 const appSlice = createSlice({

@@ -6,7 +6,7 @@ import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ImagesSVG} from '../../../assets/Image';
 
-export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors, switchEnv}) => {
+export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPopupChangField, colors, switchEnv, switchShowLog}) => {
   return (
     <>
     <SafeAreaView />
@@ -16,7 +16,7 @@ export const Header = ({openPopupInputPhone, phone, balance, openWallet, openPop
           <Text style={styles.txtHeader}>Ứng dụng của bạn</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.changeField__container} onPress={() => openPopupChangField?.()}>
+        <TouchableOpacity style={styles.changeField__container} onPress={() => openPopupChangField?.()} delayLongPress={3000} onLongPress={() => switchShowLog?.()}>
           <Text style={styles.txtChangeField}>Đổi lĩnh vực</Text>
           <ImagesSVG.IconColor fill={colors[1] || '#000000'} />
         </TouchableOpacity>
