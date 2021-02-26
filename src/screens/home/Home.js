@@ -28,7 +28,6 @@ import {ContentHotel} from './sub-items/ContentHotel';
 import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 import { APP_ENV } from '../../configs/app.config';
 
-import { getUniqueId, getUserAgent } from 'react-native-device-info';
 import { PopupChangePhone } from './sub-items/PopupChangePhone';
 
 export const Home = () => {
@@ -61,16 +60,11 @@ export const Home = () => {
     Alert.alert(`showLog: ${newShowLog}`, '');
   };
 
-  // useEffect(() => {
-  //   console.log('object', getUniqueId());
-    
-  //   (async() => {
-  //     const r = await getUserAgent();
-  //     console.log('rrrrrrrrrrrr', r);
-  //   })()
-  // }, [])
-
   const handlePay = () => {
+    if (!checkValidPhoneNumber(phone)) {
+      Alert.alert('Số điện thoại không hợp lệ','');
+      return;
+    }
     payMEInit();
     payMELogin().then((res) => {
       if (res) {
@@ -192,23 +186,24 @@ export const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(`ENV: ${appEnv}`);
-    payMEInit();
+  // useEffect(() => {
+  //   console.log(`ENV: ${appEnv}`);
+  //   payMEInit();
 
-      payMELogin().then((res) => {
-        if (res) {
-          getWalletInfo();
-        } else {
-          dispatch(updateApp({balance: '0'}));
-        }
+  //     payMELogin().then((res) => {
+  //       if (res) {
+  //         getWalletInfo();
+  //       } else {
+  //         dispatch(updateApp({balance: '0'}));
+  //       }
        
-      });
-  }, [appEnv]);
+  //     });
+  // }, [appEnv]);
 
   useEffect(() => {
     // console.log({connectToken: createConnectToken('0795550300', APP_ENV[appEnv].secretKey)});
     // console.log('env1111111111111', APP_ENV[appEnv].env)
+    console.log(`ENV: ${appEnv}`);
     if (checkValidPhoneNumber(phone)) {
       //do sonmething
       payMEInit();
@@ -221,12 +216,17 @@ export const Home = () => {
         }
        
       });
-    } else if (!phone) {
-      dispatch(updateApp({balance: '0'}));
     }
-  }, [phone]);
+    //  else if (!phone) {
+    //   dispatch(updateApp({balance: '0'}));
+    // }
+  }, [phone, appEnv]);
 
   const openWallet = () => {
+    if (!checkValidPhoneNumber(phone)) {
+      Alert.alert('Số điện thoại không hợp lệ','');
+      return;
+    }
     payMEInit();
     payMELogin().then((res) => {
       if (res) {
