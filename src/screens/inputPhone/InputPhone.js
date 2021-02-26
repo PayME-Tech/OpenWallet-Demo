@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
+  Keyboard,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -11,6 +12,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch} from 'react-redux';
+import {clientRegister, sentOTP} from '../../apis';
 import {Colors} from '../../assets/Colors';
 import {Fonts} from '../../assets/Fonts';
 import {Images} from '../../assets/Image';
@@ -28,11 +30,23 @@ export const InputPhone = () => {
   const popupOtpRef = useRef(null);
   const openPopupOtp = () => popupOtpRef?.current?.open();
 
-  const handlePressBtn = () => {
+  const handlePressBtn = async () => {
+    Keyboard.dismiss();
     setBlur(true);
     if (checkValidPhoneNumber(phoneInput)) {
+      const response = await sentOTP(phoneInput);
+      console.log('=========', response);
+      if (response.status) {
+        if (response.response.Account?.ForgotPassword?.SendOTP?.succeeded) {
+          openPopupOtp();
+        } else {
+          alert(response.response.Account?.ForgotPassword?.SendOTP?.message || 'Error');
+        }
+      } else {
+        alert('Call api error')
+      }
       // call api send otp -> open popup or show error
-      openPopupOtp();
+      // openPopupOtp();
     }
     // else if (!phoneInput) {
     //   closeModal();
@@ -44,6 +58,16 @@ export const InputPhone = () => {
     popupOtpRef?.current?.close();
     dispatch(updateApp({phone: phoneInput}));
   };
+
+  useEffect(() => {
+    (async () => {
+      const res = await clientRegister();
+      console.log('+++++++++++++++++++++++', res);
+      if (!res.status) {
+        console.log('EROOR');
+      }
+    })();
+  }, []);
 
   return (
     <Layout backgroundColor={'#ffffff'} style={{paddingTop: 0}}>
@@ -71,7 +95,7 @@ export const InputPhone = () => {
           </Text>
 
           <TextInput
-            // autoFocus
+            autoFocus
             style={styles.textInput}
             value={phoneInput}
             onChangeText={(text) => setPhoneInput(text)}
@@ -125,7 +149,7 @@ export const InputPhone = () => {
         </View>
       </View>
 
-      <PopupOtp modalRef={popupOtpRef} updatePhone={handleUpdatePhone} />
+      <PopupOtp modalRef={popupOtpRef} updatePhone={handleUpdatePhone} phone={phoneInput} />
       <SafeAreaView />
     </Layout>
   );

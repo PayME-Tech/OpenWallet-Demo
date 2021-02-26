@@ -4,6 +4,7 @@
 //withShowLog: (BOOL)showLog)
 //withShowLog showLog: Bool
 //showLog ? 1 : 0
+//showLog: Boolean
 import React, {useEffect, useRef, useState} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';

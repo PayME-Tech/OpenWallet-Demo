@@ -1,19 +1,36 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useRef} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {verifyOTP} from '../../../apis';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {ModalizeTransparent} from '../../../components/ModalizeTransparent';
 import PasswordInputConfirm from '../../../components/PasswordInputConfirm';
 import {RF} from '../../../helpers/ResponsiveFontSize';
 
-export const PopupOtp = ({modalRef, updatePhone}) => {
+export const PopupOtp = ({modalRef, updatePhone, phone}) => {
   const inputRef = useRef(null);
 
-  const onSubmitOtp = (value) => {
+  const onSubmitOtp = async (value) => {
     console.log('object', value);
+    console.log('phone', phone);
+    const response = await verifyOTP(phone, value);
+    console.log('=========', response);
+    if (response.status) {
+      if (response.response.Account?.ForgotPassword?.VerifyOTP?.succeeded) {
+        updatePhone?.();
+      } else {
+        alert(
+          response.response.Account?.ForgotPassword?.VerifyOTP?.message ||
+            'Error',
+        );
+      }
+    } else {
+      alert('Call api error');
+    }
     // call api fail -> show error
     // call api verify success
-    updatePhone?.();
+    // updatePhone?.();
   };
 
   const focusOtpInput = () => {
@@ -65,7 +82,7 @@ export const PopupOtp = ({modalRef, updatePhone}) => {
                 fontFamily: Fonts.MainLight,
                 textAlign: 'center',
               }}>
-              {` Gửi lại`}
+              {' Gửi lại'}
             </Text>
           </TouchableOpacity>
         </View>
