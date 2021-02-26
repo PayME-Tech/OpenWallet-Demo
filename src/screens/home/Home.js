@@ -77,7 +77,7 @@ export const Home = () => {
           appEnv === 'SANDBOX' ? 299000 : 10000,
           'note',
           new Date().toISOString(),
-          appEnv === 'SANDBOX' ? 37048160 : 57956431,
+          appEnv === 'SANDBOX' ? 24088141 : 57956431, // stroreId
           'extractData',
           true,
           (res) => {

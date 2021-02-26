@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useRef, useState} from 'react';
 import {
   Image,
@@ -9,14 +10,14 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Colors} from '../../assets/Colors';
 import {Fonts} from '../../assets/Fonts';
 import {Images} from '../../assets/Image';
 import {Layout} from '../../components/layout/Layout';
-import { checkValidPhoneNumber } from '../../helpers';
-import { updateApp } from '../../redux/slices/app.slice';
-import { PopupOtp } from './sub-items/PopupOtp';
+import {checkValidPhoneNumber} from '../../helpers';
+import {updateApp} from '../../redux/slices/app.slice';
+import {PopupOtp} from './sub-items/PopupOtp';
 
 export const InputPhone = () => {
   const dispatch = useDispatch();
@@ -31,8 +32,8 @@ export const InputPhone = () => {
     setBlur(true);
     if (checkValidPhoneNumber(phoneInput)) {
       // call api send otp -> open popup or show error
-      openPopupOtp()
-    } 
+      openPopupOtp();
+    }
     // else if (!phoneInput) {
     //   closeModal();
     //   dispatch(updateApp({phone: phoneInput}));
@@ -42,15 +43,23 @@ export const InputPhone = () => {
   const handleUpdatePhone = () => {
     popupOtpRef?.current?.close();
     dispatch(updateApp({phone: phoneInput}));
-  }
+  };
 
   return (
-    <Layout backgroundColor={'#ffffff'}>
-      <View>
-        <Image source={Images.Artwork} style={{width: '100%', borderBottomLeftRadius: 20, borderBottomRightRadius: 20}} />
+    <Layout backgroundColor={'#ffffff'} style={{paddingTop: 0}}>
+      <View style={{flex: 65}}>
+        <Image
+          source={Images.Artwork}
+          style={{
+            height: '100%',
+            width: '100%',
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20,
+          }}
+        />
       </View>
 
-      <View style={{flex: 1, justifyContent: 'space-between'}}>
+      <View style={{flex: 35, justifyContent: 'space-between'}}>
         <View style={{paddingHorizontal: 15, paddingVertical: 10}}>
           <Text
             style={{
@@ -62,7 +71,7 @@ export const InputPhone = () => {
           </Text>
 
           <TextInput
-            autoFocus
+            // autoFocus
             style={styles.textInput}
             value={phoneInput}
             onChangeText={(text) => setPhoneInput(text)}
@@ -79,7 +88,7 @@ export const InputPhone = () => {
             start={{x: 0.0, y: 0.25}}
             end={{x: 0.5, y: 1.0}}
             colors={[Colors.vibrantGreen, Colors.emeraldGreenThree]}
-            style={{marginTop: 20, borderRadius: 25}}>
+            style={{marginTop: 10, borderRadius: 25}}>
             <TouchableOpacity style={styles.button} onPress={handlePressBtn}>
               <Text style={styles.txtBtn}>Bắt đầu</Text>
             </TouchableOpacity>
@@ -116,7 +125,7 @@ export const InputPhone = () => {
         </View>
       </View>
 
-      <PopupOtp modalRef={popupOtpRef} updatePhone={handleUpdatePhone}/>
+      <PopupOtp modalRef={popupOtpRef} updatePhone={handleUpdatePhone} />
       <SafeAreaView />
     </Layout>
   );
