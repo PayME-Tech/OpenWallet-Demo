@@ -16,7 +16,7 @@ const NavApp = () => {
           headerShown: false,
         }}
         initialRouteName="InputPhone">
-        {phone ? (
+        {true ? (
           <MainStack.Screen name="Home" component={Home} />
         ) : (
           <MainStack.Screen name="InputPhone" component={InputPhone} />

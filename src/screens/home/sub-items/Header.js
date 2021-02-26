@@ -23,7 +23,7 @@ export const Header = ({openPopupChangePhone, openPopupInputPhone, phone, balanc
       </View>
 
       <View style={styles.header__bottom}>
-        <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupChangePhone?.()}>
+        <TouchableOpacity style={styles.accountContainer} onPress={() => openPopupInputPhone?.()}>
           <ImagesSVG.IconAvatar fill="#ffffff" />
           <View style={styles.account__right}>
             <View style={styles.account__lable__container}>
