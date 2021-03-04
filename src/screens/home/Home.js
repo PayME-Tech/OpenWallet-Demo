@@ -92,7 +92,7 @@ export const Home = () => {
             } else if (error?.code === -8) {
               // Alert.alert(error?.message || 'dong modal','');
             } else {
-              Alert.alert('Thông báo', `${error?.code || ''}`);
+              Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
             }
           },
         );
@@ -131,7 +131,7 @@ export const Home = () => {
           // else {
           //   Alert.alert('Thông báo',`${error?.code || ''}`);
           // }
-          Alert.alert('Thông báo',`${error?.code || ''}`);
+          Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
           resolve(false);
         },
       );
