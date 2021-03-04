@@ -64,7 +64,7 @@ export const Home = () => {
 
   const handlePay = () => {
     if (!checkValidPhoneNumber(phone)) {
-      Alert.alert('Số điện thoại không hợp lệ','');
+      Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
     }
     payMEInit();
@@ -85,16 +85,14 @@ export const Home = () => {
             console.log(error);
             if (error?.code === -4) {
               popupNotifyRef.current?.open('ACTIVE');
-            } else if (error?.code === -6) {
-              Alert.alert(error?.message || 'Vui lòng kiểm tra lại số dư tài khoản','');
-            } else if (error?.code === -8) {
-              // Alert.alert(error?.message || 'dong modal','');
             } else if (error?.code === -5) {
               popupNotifyRef.current?.open('KYC');
-            }
-            else {
-              // Alert.alert(error?.message || 'Error','');
-              Alert.alert(`Error code ${error?.code || ''}`, `${error?.message}` || '');
+            } else if (error?.code === -6) {
+              Alert.alert('Thông báo', 'Vui lòng kiểm tra lại số dư tài khoản');
+            } else if (error?.code === -8) {
+              // Alert.alert(error?.message || 'dong modal','');
+            } else {
+              Alert.alert('Thông báo', `${error?.code || ''}`);
             }
           },
         );
@@ -127,12 +125,13 @@ export const Home = () => {
         },
         (error) => {
           console.log('error', error);
-          if (error?.code === 401) {
-            Alert.alert(error?.message || 'Số điện thoại không hợp lệ!','');
-          }
-          else {
-            Alert.alert(`Error code ${error?.code || ''}`, `${error?.message}` || '');
-          }
+          // if (error?.code === 401) {
+          //   Alert.alert('Thông báo', `${error?.code || ''}`);
+          // }
+          // else {
+          //   Alert.alert('Thông báo',`${error?.code || ''}`);
+          // }
+          Alert.alert('Thông báo',`${error?.code || ''}`);
           resolve(false);
         },
       );
@@ -201,7 +200,7 @@ export const Home = () => {
 
   const openWallet = () => {
     if (!checkValidPhoneNumber(phone)) {
-      Alert.alert('Số điện thoại không hợp lệ','');
+      Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
     }
     payMEInit();
