@@ -29,6 +29,7 @@ import {ContentSuperMarket} from './sub-items/ContentSuperMarket';
 import { APP_ENV } from '../../configs/app.config';
 
 import { PopupChangePhone } from './sub-items/PopupChangePhone';
+import { PopupNotify } from './sub-items/PopupNotify';
 
 export const Home = () => {
   const {phone, balance, colors, field, appEnv, showLog} = useSelector(
@@ -41,6 +42,7 @@ export const Home = () => {
   const popupInputPhoneRef = useRef(null);
   const popupChangFieldRef = useRef(null);
   const popupChangePhoneRef = useRef(null);
+  const popupNotifyRef = useRef(null);
 
   const openPopupInputPhone = () => popupInputPhoneRef?.current?.open();
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
@@ -82,38 +84,13 @@ export const Home = () => {
           (error) => {
             console.log(error);
             if (error?.code === -4) {
-              Alert.alert(
-                'Tài khoản chưa kích hoạt',
-                'Bạn có muốn kích hoạt không?',
-                [
-                  {
-                    text: 'Huỷ',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                  },
-                  {
-                    text: 'Đồng ý',
-                    onPress: () => {
-                      payME.openWallet(
-                        10000,
-                        'a',
-                        '',
-                        (res) => {
-                          console.log(res);
-                        },
-                        (message) => {
-                          console.log(message);
-                        },
-                      );
-                    },
-                  },
-                ],
-                {cancelable: false},
-              );
+              popupNotifyRef.current?.open('ACTIVE');
             } else if (error?.code === -6) {
               Alert.alert(error?.message || 'Vui lòng kiểm tra lại số dư tài khoản','');
             } else if (error?.code === -8) {
               // Alert.alert(error?.message || 'dong modal','');
+            } else if (error?.code === -5) {
+              popupNotifyRef.current?.open('KYC');
             }
             else {
               // Alert.alert(error?.message || 'Error','');
@@ -297,6 +274,8 @@ export const Home = () => {
       <PopupChangField modalRef={popupChangFieldRef} />
 
       <PopupChangePhone modalRef={popupChangePhoneRef}  />
+
+      <PopupNotify ref={popupNotifyRef} />
     </Layout>
   );
 };

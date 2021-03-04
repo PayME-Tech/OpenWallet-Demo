@@ -13,6 +13,7 @@ import Icon_1 from './images/svg/icon_1.svg';
 import Icon_2 from './images/svg/icon_2.svg';
 import Icon_3 from './images/svg/icon_3.svg';
 import Icon_4 from './images/svg/icon_4.svg';
+import IcSetClose16Px from './images/svg/icSetClose16Px.svg';
 
 export const ImagesSVG = {
   IconColor,
@@ -30,6 +31,7 @@ export const ImagesSVG = {
   Icon_2,
   Icon_3,
   Icon_4,
+  IcSetClose16Px,
 };
 
 export const Images = {
