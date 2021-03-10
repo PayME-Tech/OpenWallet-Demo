@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android --port=8088",
+    "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start --port=8088",
+    "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
     "nodeify": "rn-nodeify --hack --install process,crypto,events,constant,console,stream,url,util",
