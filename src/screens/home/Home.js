@@ -48,6 +48,9 @@ export const Home = () => {
   const openPopupChangField = () => popupChangFieldRef?.current?.open();
   const openPopupChangePhone = () => popupChangePhoneRef?.current?.open();
 
+  const [listSupportedServices, setListSupportedServices] = useState([]);
+  console.log('=======================listSupportedServices', listSupportedServices)
+
   // const [appEnv, setAppEnv] = useState('PRODUCTION');
 
   const switchEnv = () => {
@@ -77,6 +80,7 @@ export const Home = () => {
           appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
           'extractData',
           true,
+          null,
           (res) => {
             console.log(res);
             getWalletInfo();
@@ -156,6 +160,15 @@ export const Home = () => {
     );
   };
 
+  const getSupportedServices = () => {
+    payME.getSupportedServices(
+      (response) => {
+        console.log('response getSupportedServices', response);
+        setListSupportedServices(response || [])
+      }
+    )
+  }
+
   useEffect(() => {
     if (!phone) {
       openPopupInputPhone();
@@ -187,6 +200,7 @@ export const Home = () => {
       payMELogin().then((res) => {
         if (res) {
           getWalletInfo();
+          getSupportedServices();
         } else {
           dispatch(updateApp({balance: '0'}));
         }
@@ -224,7 +238,7 @@ export const Home = () => {
   const renderContent = () => {
     switch (field) {
       case FIELDS.DEFAULT:
-        return <ContentDefault handlePay={handlePay} />;
+        return <ContentDefault handlePay={handlePay} listSupportedServices={listSupportedServices} />;
       case FIELDS.FIELD_FANDB:
         return <ContentFieldFAndB handlePay={handlePay} />;
       case FIELDS.HOTEL:

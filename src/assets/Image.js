@@ -14,6 +14,20 @@ import Icon_2 from './images/svg/icon_2.svg';
 import Icon_3 from './images/svg/icon_3.svg';
 import Icon_4 from './images/svg/icon_4.svg';
 import IcSetClose16Px from './images/svg/icSetClose16Px.svg';
+import iconMoreService from './images/svg/iconMoreService.svg';
+import iconServiceCardPhone from './images/svg/iconServiceCardPhone.svg';
+import iconServiceInternet from './images/svg/iconServiceInternet.svg';
+import iconServiceIsec from './images/svg/iconServiceIsec.svg';
+import iconServiceLearnbill from './images/svg/iconServiceLearnbill.svg';
+import iconServiceLight from './images/svg/iconServiceLight.svg';
+import iconServiceNull from './images/svg/iconServiceNull.svg';
+import iconServicePhone from './images/svg/iconServicePhone.svg';
+import iconServicePhoneBill from './images/svg/iconServicePhoneBill.svg';
+import iconServicePhoneLocation from './images/svg/iconServicePhoneLocation.svg';
+import iconServicePlane from './images/svg/iconServicePlane.svg';
+import iconServiceTV from './images/svg/iconServiceTV.svg';
+import iconServiceWater from './images/svg/iconServiceWater.svg';
+import iconMoreServiceDown from './images/svg/iconMoreServiceDown.svg';
 
 export const ImagesSVG = {
   IconColor,
@@ -32,6 +46,20 @@ export const ImagesSVG = {
   Icon_3,
   Icon_4,
   IcSetClose16Px,
+  iconMoreService,
+  iconServiceCardPhone,
+  iconServiceInternet,
+  iconServiceIsec,
+  iconServiceLearnbill,
+  iconServiceLight,
+  iconServiceNull,
+  iconServicePhone,
+  iconServicePhoneBill,
+  iconServicePhoneLocation,
+  iconServicePlane,
+  iconServiceTV,
+  iconServiceWater,
+  iconMoreServiceDown,
 };
 
 export const Images = {

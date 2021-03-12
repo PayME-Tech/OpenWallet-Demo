@@ -1,4 +1,6 @@
+import React from 'react';
 import crypto from 'crypto';
+import {ImagesSVG} from '../assets/Image';
 
 export const createConnectToken = (phone, secretKey) => {
   const algorithm = `aes-${secretKey.length === 16 ? 128 : 256}-cbc`; // key is 16 or 32  length
@@ -31,3 +33,49 @@ export function formatNumber(number) {
 export function checkValidPhoneNumber(number) {
   return /^(0|84)\d{9}$/g.test(number);
 }
+
+export const getIconService = (code) => {
+  if (code === 'WATE') {
+    return <ImagesSVG.iconServiceWater />;
+  }
+  if (code === 'FTEL') {
+    return <ImagesSVG.iconServicePhoneLocation />;
+  }
+  if (code === 'MOBILE_TOPUP') {
+    return <ImagesSVG.iconServicePhone />;
+  }
+  if (code === 'TIVI') {
+    return <ImagesSVG.iconServiceTV />;
+  }
+  if (code === 'ISEC') {
+    return <ImagesSVG.iconServiceIsec />;
+  }
+  if (code === 'ATIC') {
+    return <ImagesSVG.iconServicePlane />;
+  }
+  if (code === 'HOCPHI') {
+    return <ImagesSVG.iconServiceLearnbill />;
+  }
+  if (code === 'MOBILE_CARD') {
+    return <ImagesSVG.iconServiceCardPhone />;
+  }
+  if (code === 'ADSL') {
+    return <ImagesSVG.iconServiceInternet />;
+  }
+  if (code === 'POWE') {
+    return <ImagesSVG.iconServiceLight />;
+  }
+  if (code === 'PPMB') {
+    return <ImagesSVG.iconServicePhoneBill />;
+  }
+  // if (code === 'BAOHIEM') {
+  //   return ImagesSVG.iconServiceInsurrance;
+  // }
+  // if (code === 'GAME_CARD') {
+  //   return ImagesSVG.iconServiceGameCard;
+  // }
+  // if (code === 'TET') {
+  //   return ImagesSVG.iconServiceLixi;
+  // }
+  return <ImagesSVG.iconServiceNull />;
+};
