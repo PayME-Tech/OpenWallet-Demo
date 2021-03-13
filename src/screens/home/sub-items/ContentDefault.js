@@ -4,10 +4,10 @@ import {Images} from '../../../assets/Image';
 import {ListProduct} from './ListProduct';
 import {ServiceUtilPayme} from './ServiceUtilPayme';
 
-export const ContentDefault = ({handlePay, listSupportedServices}) => {
+export const ContentDefault = ({handlePay, listSupportedServices, popupNotifyRef}) => {
   return (
     <ScrollView bounces={false} nestedScrollEnabled>
-      <ServiceUtilPayme data={listSupportedServices} />
+      <ServiceUtilPayme data={listSupportedServices} popupNotifyRef={popupNotifyRef} />
 
       {/* <ScrollView bounces={false} nestedScrollEnabled style={{marginTop: 10}}> */}
       <View style={[styles.banner, {marginTop: 10}]}>

@@ -35,7 +35,7 @@ export const Home = () => {
   const {phone, balance, colors, field, appEnv, showLog} = useSelector(
     (state) => state.appReducer,
   );
-  console.log('appEnv11111111111111', showLog);
+  // console.log('appEnv11111111111111', showLog);
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ export const Home = () => {
   const openPopupChangePhone = () => popupChangePhoneRef?.current?.open();
 
   const [listSupportedServices, setListSupportedServices] = useState([]);
-  console.log('=======================listSupportedServices', listSupportedServices)
+  // console.log('=======================listSupportedServices', listSupportedServices)
 
   // const [appEnv, setAppEnv] = useState('PRODUCTION');
 
@@ -238,7 +238,7 @@ export const Home = () => {
   const renderContent = () => {
     switch (field) {
       case FIELDS.DEFAULT:
-        return <ContentDefault handlePay={handlePay} listSupportedServices={listSupportedServices} />;
+        return <ContentDefault handlePay={handlePay} listSupportedServices={listSupportedServices} popupNotifyRef={popupNotifyRef} />;
       case FIELDS.FIELD_FANDB:
         return <ContentFieldFAndB handlePay={handlePay} />;
       case FIELDS.HOTEL:
