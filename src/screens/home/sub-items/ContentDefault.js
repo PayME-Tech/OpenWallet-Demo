@@ -9,13 +9,11 @@ export const ContentDefault = ({handlePay, listSupportedServices, popupNotifyRef
     <ScrollView bounces={false} nestedScrollEnabled>
       <ServiceUtilPayme data={listSupportedServices} popupNotifyRef={popupNotifyRef} />
 
-      {/* <ScrollView bounces={false} nestedScrollEnabled style={{marginTop: 10}}> */}
       <View style={[styles.banner, {marginTop: 10}]}>
         <Image source={Images.BannerSample} style={{width: '100%'}} />
       </View>
 
       <ListProduct handlePay={handlePay} />
-      {/* </ScrollView> */}
     </ScrollView>
   );
 };

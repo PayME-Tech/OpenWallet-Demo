@@ -44,7 +44,6 @@ export const clientRegister = async () => {
     platform: Platform.OS,
     deviceId: deviceId,
     channel: 'channel',
-    // version: VersionNumber.appVersion || '1.0.0',
     version: '1.0.0',
     userAgent,
     isEmulator: IsEmulator,
@@ -77,7 +76,6 @@ export const verifyOTP = async (phone, activeCode) => {
   return handleResponse(res);
 };
 
-//if (!response.data?.errors) {}
 const handleResponse = (response) => {
   if (!response.data?.errors) {
     return {status: true, response: response?.data?.data ?? {}};

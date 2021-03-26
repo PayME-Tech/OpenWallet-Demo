@@ -8,7 +8,6 @@ import payME from 'react-native-payme-sdk';
 import { ImagesSVG } from '../../../assets/Image';
 
 export const ServiceUtilPayme = ({data, popupNotifyRef}) => {
-  // console.log('==============data', data);
   const [toggle, setToggle] = React.useState(false);
   const getList = () => {
     if (toggle) {
@@ -91,7 +90,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   item__container: {
-    // flex: 1,
     width: '25%',
     alignItems: 'center',
     justifyContent: 'center',

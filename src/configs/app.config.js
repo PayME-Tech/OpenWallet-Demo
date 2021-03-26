@@ -27,7 +27,6 @@ export const APP_ENV = {
 
   SANDBOX: {
     appToken:
-      // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTIsImlhdCI6MTYxMzk5MDU5Nn0.donBYzgUyZ2qJwg2TVu43qCQBmYRkbPCsJwdbmLulQ8',
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTQsImlhdCI6MTYxNDE2NDI3MH0.MmzNL81YTx8XyTu6SczAqZtnCA_ALsn9GHsJGBKJSIk',
     publicKey: `-----BEGIN PUBLIC KEY-----
       MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMyTFdiYBiaSIBgqFdxSgzk5LYXKocgT
@@ -44,6 +43,5 @@ export const APP_ENV = {
       -----END RSA PRIVATE KEY-----`,
     env: ENV.SANDBOX,
     secretKey: 'de7bbe6566b0f1c38898b7751b057a94',
-    // secretKey: 'ecd336c200e96265e00e312c6ca28d22',
   },
 };

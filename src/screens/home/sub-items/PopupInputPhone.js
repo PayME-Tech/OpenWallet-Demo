@@ -38,11 +38,7 @@ export const PopupInputPhone = ({modalRef, phone, colors}) => {
     if (checkValidPhoneNumber(phoneInput)) {
       closeModal();
       dispatch(updateApp({phone: phoneInput}));
-    } 
-    // else if (!phoneInput) {
-    //   closeModal();
-    //   dispatch(updateApp({phone: phoneInput}));
-    // }
+    }
   };
 
   return (

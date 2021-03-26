@@ -33,13 +33,6 @@ const DATA = [
     desc: 'Đặt phòng khách sạn, motel, biệt thự…',
     colors: [Colors.orangeYellow, Colors.brightOrange],
   },
-  // {
-  //   id: '4',
-  //   key: FIELDS.TRAVELTOUR,
-  //   title: 'Tour du lịch',
-  //   desc: 'Đặt phòng khách sạn, motel, biệt thự…',
-  //   colors: [Colors.salmon, Colors.warmPink],
-  // },
 ];
 
 export const PopupChangField = ({modalRef}) => {

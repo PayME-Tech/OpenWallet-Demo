@@ -1,10 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
-//withShowLog: (BOOL)showLog)
-//withShowLog showLog: Bool
-//showLog ? 1 : 0
-//showLog: Boolean
 import React, {useEffect, useRef, useState} from 'react';
 import {Alert, StyleSheet, View} from 'react-native';
 import {Layout} from '../../components/layout/Layout';
@@ -35,7 +31,6 @@ export const Home = () => {
   const {phone, balance, colors, field, appEnv, showLog} = useSelector(
     (state) => state.appReducer,
   );
-  // console.log('appEnv11111111111111', showLog);
   const configColor = colors || ['#75255b', '#9d455f'];
   const dispatch = useDispatch();
 
@@ -49,9 +44,6 @@ export const Home = () => {
   const openPopupChangePhone = () => popupChangePhoneRef?.current?.open();
 
   const [listSupportedServices, setListSupportedServices] = useState([]);
-  // console.log('=======================listSupportedServices', listSupportedServices)
-
-  // const [appEnv, setAppEnv] = useState('PRODUCTION');
 
   const switchEnv = () => {
     const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
@@ -94,7 +86,6 @@ export const Home = () => {
             } else if (error?.code === -6) {
               Alert.alert('Thông báo', 'Vui lòng kiểm tra lại số dư tài khoản');
             } else if (error?.code === -8) {
-              // Alert.alert(error?.message || 'dong modal','');
             } else {
               Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
             }
@@ -129,12 +120,6 @@ export const Home = () => {
         },
         (error) => {
           console.log('error', error);
-          // if (error?.code === 401) {
-          //   Alert.alert('Thông báo', `${error?.code || ''}`);
-          // }
-          // else {
-          //   Alert.alert('Thông báo',`${error?.code || ''}`);
-          // }
           Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
           resolve(false);
         },
@@ -155,7 +140,6 @@ export const Home = () => {
       (error) => {
         console.log('error getWalletInfo', error);
         dispatch(updateApp({balance: '0'}));
-        // alert('Thông tin xác thực không hợp lệ');
       },
     );
   };
@@ -175,26 +159,9 @@ export const Home = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   console.log(`ENV: ${appEnv}`);
-  //   payMEInit();
-
-  //     payMELogin().then((res) => {
-  //       if (res) {
-  //         getWalletInfo();
-  //       } else {
-  //         dispatch(updateApp({balance: '0'}));
-  //       }
-       
-  //     });
-  // }, [appEnv]);
-
   useEffect(() => {
-    // console.log({connectToken: createConnectToken('0795550300', APP_ENV[appEnv].secretKey)});
-    // console.log('env1111111111111', APP_ENV[appEnv].env)
     console.log(`ENV: ${appEnv}`);
     if (checkValidPhoneNumber(phone)) {
-      //do sonmething
       payMEInit();
 
       payMELogin().then((res) => {
@@ -207,9 +174,6 @@ export const Home = () => {
        
       });
     }
-    //  else if (!phone) {
-    //   dispatch(updateApp({balance: '0'}));
-    // }
   }, [phone, appEnv]);
 
   const openWallet = () => {

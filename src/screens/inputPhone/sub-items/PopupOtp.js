@@ -28,9 +28,6 @@ export const PopupOtp = ({modalRef, updatePhone, phone}) => {
     } else {
       alert('Call api error');
     }
-    // call api fail -> show error
-    // call api verify success
-    // updatePhone?.();
   };
 
   const focusOtpInput = () => {

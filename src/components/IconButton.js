@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 
 export const IconButton = ({
   style,
-  source, //= <ImagesSVG.ArrowBackLongWhite fill={Colors.white} />,
+  source, 
   onPress,
 }) => {
   return (

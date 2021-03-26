@@ -45,13 +45,7 @@ export const InputPhone = () => {
       } else {
         alert('Call api error')
       }
-      // call api send otp -> open popup or show error
-      // openPopupOtp();
     }
-    // else if (!phoneInput) {
-    //   closeModal();
-    //   dispatch(updateApp({phone: phoneInput}));
-    // }
   };
 
   const handleUpdatePhone = () => {
