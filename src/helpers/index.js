@@ -68,14 +68,14 @@ export const getIconService = (code) => {
   if (code === 'PPMB') {
     return <ImagesSVG.iconServicePhoneBill />;
   }
-  // if (code === 'BAOHIEM') {
-  //   return ImagesSVG.iconServiceInsurrance;
-  // }
-  // if (code === 'GAME_CARD') {
-  //   return ImagesSVG.iconServiceGameCard;
-  // }
-  // if (code === 'TET') {
-  //   return ImagesSVG.iconServiceLixi;
-  // }
+  if (code === 'GAME_CARD') {
+    return <ImagesSVG.IconGameCard />;
+  }
+  if (code === 'BAOHIEM') {
+    return <ImagesSVG.IconServiceInsurrance />;
+  }
+  if (code === 'TET') {
+    return <ImagesSVG.IconServiceLixi />;
+  }
   return <ImagesSVG.iconServiceNull />;
 };

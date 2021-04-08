@@ -28,6 +28,9 @@ import iconServicePlane from './images/svg/iconServicePlane.svg';
 import iconServiceTV from './images/svg/iconServiceTV.svg';
 import iconServiceWater from './images/svg/iconServiceWater.svg';
 import iconMoreServiceDown from './images/svg/iconMoreServiceDown.svg';
+import IconGameCard from './images/svg/iconGamecard.svg';
+import IconServiceInsurrance from './images/svg/iconBaohiem.svg';
+import IconServiceLixi from './images/svg/iconLixi.svg';
 
 export const ImagesSVG = {
   IconColor,
@@ -60,6 +63,9 @@ export const ImagesSVG = {
   iconServiceTV,
   iconServiceWater,
   iconMoreServiceDown,
+  IconGameCard,
+  IconServiceInsurrance,
+  IconServiceLixi,
 };
 
 export const Images = {
