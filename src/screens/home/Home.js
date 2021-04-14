@@ -46,9 +46,10 @@ export const Home = () => {
   const [listSupportedServices, setListSupportedServices] = useState([]);
 
   const switchEnv = () => {
-    const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
-    dispatch(updateApp({appEnv: newEnv}));
-    Alert.alert(`ENV: ${newEnv}`, '');
+    console.log('change env');
+    // const newEnv = appEnv === 'SANDBOX' ? 'PRODUCTION' : 'SANDBOX';
+    // dispatch(updateApp({appEnv: newEnv}));
+    // Alert.alert(`ENV: ${newEnv}`, '');
   };
 
   const switchShowLog = () => {
