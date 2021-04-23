@@ -84,9 +84,6 @@ export const Home = () => {
               popupNotifyRef.current?.open('ACTIVE');
             } else if (error?.code === -5) {
               popupNotifyRef.current?.open('KYC');
-            } else if (error?.code === -6) {
-              Alert.alert('Thông báo', 'Vui lòng kiểm tra lại số dư tài khoản');
-            } else if (error?.code === -8) {
             } else {
               Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
             }
