@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.2)
+  - Alamofire (5.4.3)
   - boost-for-react-native (1.63.0)
   - BVLinearGradient (2.5.6):
     - React
@@ -24,7 +24,7 @@ PODS:
     - glog
   - glog (0.3.5)
   - lottie-ios (3.2.1)
-  - PayMESDK (0.0.52):
+  - PayMESDK (0.0.60):
     - Alamofire
     - CryptoSwift (= 1.0)
     - lottie-ios
@@ -195,7 +195,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-payme-sdk (0.1.45):
+  - react-native-payme-sdk (0.1.49):
     - Alamofire
     - CryptoSwift (= 1.0)
     - lottie-ios
@@ -417,7 +417,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
@@ -427,7 +427,7 @@ SPEC CHECKSUMS:
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
-  PayMESDK: 3cd278cbb12acbb0b81b57da19727e451bca6edb
+  PayMESDK: dddd6a48dba7b4de31118698a68864ada77608c5
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
   React: b0a957a2c44da4113b0c4c9853d8387f8e64e615
@@ -438,7 +438,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-payme-sdk: 26814b1cf87b51eddb20cbbe9e3585305a8d5c98
+  react-native-payme-sdk: bc2b0ef4b54655d9d02d123601683bdd72212293
   react-native-randombytes: b6677f7d495c27e9ee0dbd77ebc97b3c59173729
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
