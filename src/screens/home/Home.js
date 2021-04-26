@@ -84,6 +84,8 @@ export const Home = () => {
               popupNotifyRef.current?.open('ACTIVE');
             } else if (error?.code === -5) {
               popupNotifyRef.current?.open('KYC');
+            } else if (error?.code === -8) {
+              // close modal
             } else {
               Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
             }
