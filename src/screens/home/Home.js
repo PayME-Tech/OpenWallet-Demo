@@ -11,7 +11,6 @@ import {PopupInputPhone} from './sub-items/PopupInputPhone';
 import payME, {LANGUAGES} from 'react-native-payme-sdk';
 import {
   checkValidPhoneNumber,
-  createConnectToken,
   formatNumber,
 } from '../../helpers';
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,6 +25,7 @@ import { APP_ENV } from '../../configs/app.config';
 
 import { PopupChangePhone } from './sub-items/PopupChangePhone';
 import { PopupNotify } from './sub-items/PopupNotify';
+import { encryptAES } from '../../helpers/createConnectToken';
 
 export const Home = () => {
   const {phone, balance, colors, field, appEnv, showLog} = useSelector(
@@ -53,9 +53,10 @@ export const Home = () => {
   };
 
   const switchShowLog = () => {
-    const newShowLog = !showLog;
-    dispatch(updateApp({showLog: newShowLog}));
-    Alert.alert(`showLog: ${newShowLog}`, '');
+    console.log('switchShowLog');
+    // const newShowLog = !showLog;
+    // dispatch(updateApp({showLog: newShowLog}));
+    // Alert.alert(`showLog: ${newShowLog}`, '');
   };
 
   const handlePay = () => {
@@ -96,8 +97,12 @@ export const Home = () => {
   };
 
   const payMEInit = () => {
-    const connectToken = createConnectToken(phone, APP_ENV[appEnv].secretKey);
-    console.log('connectToken', connectToken)
+    const connectToken = encryptAES(JSON.stringify({
+      userId: phone,
+      phone,
+      timestamp: Date.now(),
+    }), APP_ENV[appEnv].secretKey);
+    console.log('connectToken', connectToken);
     
     payME.init(
       APP_ENV[appEnv].appToken,
@@ -107,7 +112,7 @@ export const Home = () => {
       configColor,
       LANGUAGES.VN,
       APP_ENV[appEnv].env,
-      showLog
+      // showLog
     );
   };
 
@@ -148,10 +153,10 @@ export const Home = () => {
     payME.getSupportedServices(
       (response) => {
         console.log('response getSupportedServices', response);
-        setListSupportedServices(response || [])
+        setListSupportedServices(response || []);
       }
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     if (!phone) {

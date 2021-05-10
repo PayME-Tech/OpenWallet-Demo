@@ -1,30 +1,5 @@
 import React from 'react';
-import crypto from 'crypto';
 import {ImagesSVG} from '../assets/Image';
-
-export const createConnectToken = (phone, secretKey) => {
-  const algorithm = `aes-${secretKey.length === 16 ? 128 : 256}-cbc`; // key is 16 or 32  length
-  const ivbyte = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  // eslint-disable-next-line no-undef
-  const iv = Buffer.from(ivbyte);
-
-  const data = {
-    userId: phone, //Math.floor(Math.random() * 10000000),
-    phone,
-    timestamp: Date.now(),
-  };
-  // console.log(data.userId)
-
-  const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
-
-  let encrypted = cipher.update(JSON.stringify(data), 'utf8', 'base64');
-
-  let connectToken = encrypted + cipher.final('base64');
-
-  // console.log({connectToken});
-
-  return connectToken;
-};
 
 export function formatNumber(number) {
   return number.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
