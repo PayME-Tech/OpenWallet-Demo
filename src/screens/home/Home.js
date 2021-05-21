@@ -120,7 +120,7 @@ export const Home = () => {
     return new Promise((resolve) => {
       payME.login(
         (response) => {
-          console.log('response', response);
+          console.log('response login', response);
           resolve(true);
         },
         (error) => {
@@ -190,9 +190,6 @@ export const Home = () => {
     payMELogin().then((res) => {
       if (res) {
         payME.openWallet(
-          10000,
-          'a',
-          '',
           (res) => {
             console.log(res);
           },
