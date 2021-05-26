@@ -36,9 +36,6 @@ export const PopupNotify = React.forwardRef((props, ref) => {
   const handlePressBtn = () => {
     closeModal();
     payME.openWallet(
-      10000,
-      'a',
-      '',
       (res) => {
         console.log(res);
       },
