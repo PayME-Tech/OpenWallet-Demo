@@ -59,7 +59,7 @@ export const Home = () => {
     // Alert.alert(`showLog: ${newShowLog}`, '');
   };
 
-  const handlePay = () => {
+  const handlePay = (amount) => {
     if (!checkValidPhoneNumber(phone)) {
       Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
@@ -68,7 +68,7 @@ export const Home = () => {
     payMELogin().then((res) => {
       if (res) {
         payME.pay(
-          appEnv === 'SANDBOX' ? 299000 : 10000,
+          appEnv === 'SANDBOX' ? amount : 10000,
           'note',
           new Date().toISOString(),
           appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId

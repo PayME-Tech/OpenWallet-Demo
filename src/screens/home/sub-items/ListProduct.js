@@ -26,7 +26,7 @@ export const ListProduct = ({handlePay}) => {
         bounces={false}
         showsHorizontalScrollIndicator={false}
         horizontal>
-        {['1', '2', '3'].map((item) => (
+        {['1', '2', '3', '4'].map((item) => (
           <View style={styles.item__container} key={item}>
             <View style={styles.item__content__container}>
               <Image
@@ -40,7 +40,7 @@ export const ListProduct = ({handlePay}) => {
 
               <View style={styles.item__content}>
                 <Text style={styles.txtNameProduct}>Sản phẩm 1</Text>
-                <Text style={styles.txtPriceProduct}>299,000 đ</Text>
+                <Text style={styles.txtPriceProduct}>{item === '4' ? '3,999,000 đ' : '299,000 đ'}</Text>
               </View>
             </View>
 
@@ -51,7 +51,7 @@ export const ListProduct = ({handlePay}) => {
               style={{marginTop: 10, borderRadius: 20}}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => handlePay?.()}>
+                onPress={() => handlePay?.(item === '4' ? 3999000 : 299000)}>
                 <Text style={styles.txtBtn}>Thanh toán ngay</Text>
               </TouchableOpacity>
             </LinearGradient>
