@@ -8,7 +8,7 @@ export const ContentFieldFAndB = ({handlePay}) => {
       <ScrollView bounces={false}>
         <TouchableOpacity
           style={{width: '100%', paddingBottom: 20}}
-          onPress={() => handlePay?.()}>
+          onPress={() => handlePay?.(299000)}>
           <Image
             source={require('../../../assets/images/png/bodyContent2.png')}
             style={{width: '100%'}}

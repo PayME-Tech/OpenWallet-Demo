@@ -7,7 +7,7 @@ export const ContentSuperMarket = ({handlePay}) => {
       <ScrollView bounces={false}>
         <TouchableOpacity
           style={{width: '100%', paddingBottom: 20}}
-          onPress={() => handlePay?.()}>
+          onPress={() => handlePay?.(299000)}>
           <Image
             source={require('../../../assets/images/png/contentBody.png')}
             style={{width: '100%'}}

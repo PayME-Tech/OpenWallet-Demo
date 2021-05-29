@@ -59,7 +59,7 @@ export const Home = () => {
     // Alert.alert(`showLog: ${newShowLog}`, '');
   };
 
-  const handlePay = (amount) => {
+  const handlePay = (amount = 299000) => {
     if (!checkValidPhoneNumber(phone)) {
       Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;

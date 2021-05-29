@@ -52,5 +52,8 @@ export const getIconService = (code) => {
   if (code === 'TET') {
     return <ImagesSVG.IconServiceLixi />;
   }
+  if (code === 'ADVANCE_SALARY') {
+    return <ImagesSVG.IconUngLuongHome />;
+  }
   return <ImagesSVG.iconServiceNull />;
 };
