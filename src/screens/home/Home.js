@@ -192,7 +192,10 @@ export const Home = () => {
       (response) => {
         console.log('response getSupportedServices', response);
         setListSupportedServices(response || []);
-      }
+      },
+      (error) => {
+        console.log('error getSupportedServices', error);
+      },
     );
   };
 
