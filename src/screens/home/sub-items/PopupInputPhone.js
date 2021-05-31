@@ -18,7 +18,6 @@ import {updateApp} from '../../../redux/slices/app.slice';
 import {checkValidPhoneNumber} from '../../../helpers';
 
 export const PopupInputPhone = ({modalRef, phone, colors}) => {
-  console.log({phone});
   const closeModal = () => {
     modalRef?.current?.close();
     setPhoneInput(phone);

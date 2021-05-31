@@ -1,5 +1,8 @@
 import React from 'react';
 import {ImagesSVG} from '../assets/Image';
+import store from './../redux/redux.store';
+import {ERROR_CODE} from 'react-native-payme-sdk';
+import {updateApp} from './../redux/slices/app.slice';
 
 export function formatNumber(number) {
   return number.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -56,4 +59,18 @@ export const getIconService = (code) => {
     return <ImagesSVG.IconUngLuongHome />;
   }
   return <ImagesSVG.iconServiceNull />;
+};
+
+export const checkLoginSDK = () => {
+  const isLogin = store.getState().appReducer.isLoginSDK === true;
+  console.log('???????????? checkLoginSDK: ', isLogin);
+  return isLogin;
+};
+
+export const handleErrorSDK = (error = {}) => {
+  console.log('..............handleErrorSDK');
+  const code = error?.code;
+  if (code === ERROR_CODE.EXPIRED) {
+    store.dispatch(updateApp({isLoginSDK: false}));
+  }
 };

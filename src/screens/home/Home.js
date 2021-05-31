@@ -10,8 +10,10 @@ import {Footer} from './sub-items/Footer';
 import {PopupInputPhone} from './sub-items/PopupInputPhone';
 import payME, {LANGUAGES} from 'react-native-payme-sdk';
 import {
+  checkLoginSDK,
   checkValidPhoneNumber,
   formatNumber,
+  handleErrorSDK,
 } from '../../helpers';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateApp} from '../../redux/slices/app.slice';
@@ -64,45 +66,75 @@ export const Home = () => {
       Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
     }
-    payMEInit();
-    payMELogin().then((res) => {
-      if (res) {
-        payME.pay(
-          appEnv === 'SANDBOX' ? amount : 10000,
-          'note',
-          new Date().toISOString(),
-          appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
-          'extractData',
-          true,
-          null,
-          (res) => {
-            console.log(res);
-            getWalletInfo();
-          },
-          (error) => {
-            console.log(error);
-            if (error?.code === -4) {
-              popupNotifyRef.current?.open('ACTIVE');
-            } else if (error?.code === -5) {
-              popupNotifyRef.current?.open('KYC');
-            } else if (error?.code === -8) {
-              // close modal
-            } else {
-              Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
-            }
-          },
-        );
-      }
-    });
+    if (!checkLoginSDK()) {
+      payMELogin().then((res) => {
+        if (res) {
+          payME.pay(
+            appEnv === 'SANDBOX' ? amount : 10000,
+            'note',
+            new Date().toISOString(),
+            appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
+            'extractData',
+            true,
+            null,
+            (res) => {
+              console.log('response pay', res);
+              getWalletInfo();
+            },
+            (error) => {
+              console.log('error pay', error);
+              handleErrorSDK(error);
+              if (error?.code === -4) {
+                popupNotifyRef.current?.open('ACTIVE');
+              } else if (error?.code === -5) {
+                popupNotifyRef.current?.open('KYC');
+              } else if (error?.code === -8) {
+                // close modal
+              } else {
+                Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
+              }
+            },
+          );
+        }
+      });
+    } else {
+      payME.pay(
+        appEnv === 'SANDBOX' ? amount : 10000,
+        'note',
+        new Date().toISOString(),
+        appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
+        'extractData',
+        true,
+        null,
+        (res) => {
+          console.log('response pay', res);
+          getWalletInfo();
+        },
+        (error) => {
+          console.log('error pay', error);
+          handleErrorSDK(error);
+          if (error?.code === -4) {
+            popupNotifyRef.current?.open('ACTIVE');
+          } else if (error?.code === -5) {
+            popupNotifyRef.current?.open('KYC');
+          } else if (error?.code === -8) {
+            // close modal
+          } else {
+            Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
+          }
+        },
+      );
+    }
   };
 
   const payMEInit = () => {
+    console.log('=============paymeInit');
+    dispatch(updateApp({isLoginSDK: false}));
     const connectToken = encryptAES(JSON.stringify({
       userId: phone,
       phone,
       timestamp: Date.now(),
     }), APP_ENV[appEnv].secretKey);
-    console.log('connectToken', connectToken);
     
     payME.init(
       APP_ENV[appEnv].appToken,
@@ -117,22 +149,27 @@ export const Home = () => {
   };
 
   const payMELogin = () => {
+    console.log('+++++++++++paymeLogin');
     return new Promise((resolve) => {
       payME.login(
         (response) => {
           console.log('response login', response);
+          dispatch(updateApp({isLoginSDK: true}));
           resolve(true);
         },
         (error) => {
-          console.log('error', error);
+          console.log('error login', error);
           Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
           resolve(false);
+          dispatch(updateApp({isLoginSDK: false}));
         },
       );
     });
   };
 
+  // get balance
   const getWalletInfo = () => {
+    console.log('getWalletInfo func')
     payME.getWalletInfo(
       (response) => {
         console.log('response getWalletInfo', response);
@@ -150,6 +187,7 @@ export const Home = () => {
   };
 
   const getSupportedServices = () => {
+    console.log('getSupportedServices func')
     payME.getSupportedServices(
       (response) => {
         console.log('response getSupportedServices', response);
@@ -158,47 +196,63 @@ export const Home = () => {
     );
   };
 
+  // open popup input phone first time open app
   useEffect(() => {
     if (!phone) {
       openPopupInputPhone();
     }
   }, []);
 
+  // check phone, appEnv, field -> re-init
   useEffect(() => {
-    console.log(`ENV: ${appEnv}`);
     if (checkValidPhoneNumber(phone)) {
       payMEInit();
+    }
+  }, [phone, appEnv, field]);
 
-      payMELogin().then((res) => {
-        if (res) {
-          getWalletInfo();
-          getSupportedServices();
-        } else {
-          dispatch(updateApp({balance: '0'}));
-        }
-       
-      });
+  // change phone, appEnv -> re-get balance
+  useEffect(() => {
+    if (checkValidPhoneNumber(phone)) {
+      if (!checkLoginSDK()) {
+        payMELogin().then((res) => {
+          if (res) {
+            getWalletInfo();
+            getSupportedServices();
+          }
+        });
+      } else {
+        getWalletInfo();
+        getSupportedServices();
+      }
     }
   }, [phone, appEnv]);
+
+  const openSDKWallet = () => {
+    payME.openWallet(
+      (res) => {
+        console.log('response openWllet', res);
+      },
+      (error) => {
+        console.log('error openWallet', error);
+        handleErrorSDK(error);
+      },
+    );
+  };
 
   const openWallet = () => {
     if (!checkValidPhoneNumber(phone)) {
       Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
     }
-    payMEInit();
-    payMELogin().then((res) => {
-      if (res) {
-        payME.openWallet(
-          (res) => {
-            console.log(res);
-          },
-          (message) => {
-            console.log(message);
-          },
-        );
-      }
-    });
+    if (!checkLoginSDK()) {
+      payMELogin().then((res) => {
+        if (res) {
+          openSDKWallet();
+        }
+      });
+    } else {
+      openSDKWallet();
+    }
   };
 
   const renderContent = () => {

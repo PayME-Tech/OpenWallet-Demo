@@ -3,59 +3,102 @@ import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
 import {SCREEN_SIZE} from '../../../configs/variables.config';
-import {getIconService} from '../../../helpers';
+import {checkLoginSDK, getIconService, handleErrorSDK} from '../../../helpers';
 import payME from 'react-native-payme-sdk';
-import { ImagesSVG } from '../../../assets/Image';
+import {ImagesSVG} from '../../../assets/Image';
+import {useDispatch} from 'react-redux';
+import {updateApp} from '../../../redux/slices/app.slice';
 
 export const ServiceUtilPayme = ({data, popupNotifyRef}) => {
+  const dispatch = useDispatch();
+
   const [toggle, setToggle] = React.useState(false);
+
   const getList = () => {
     if (toggle) {
       return data;
+    } else {
+      return data?.slice(0, 4);
     }
-    else {
-      return data?.slice(0,4)
-    }
-  }
-  const handlePressItem = (item) => {
-    payME.login(
+  };
+
+  const payMELogin = () => {
+    console.log('+++++++++++paymeLogin');
+    return new Promise((resolve) => {
+      payME.login(
+        (response) => {
+          console.log('response login', response);
+          dispatch(updateApp({isLoginSDK: true}));
+          resolve(true);
+        },
+        (error) => {
+          console.log('error login', error);
+          Alert.alert(
+            'Thông báo',
+            `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`,
+          );
+          resolve(false);
+          dispatch(updateApp({isLoginSDK: false}));
+        },
+      );
+    });
+  };
+
+  const openService = (item) => {
+    payME.openService(
+      {
+        code: item.code,
+        description: item.description,
+      },
       (response) => {
-        console.log('response', response);
-        payME.openService(
-          {
-            code: item.code,
-            description: item.description,
-          },
-          (response) => {
-            console.log('response openService', response);
-          },
-          (error) => {
-            console.log('error', error);
-            if (error?.code === -4) {
-              popupNotifyRef.current?.open('ACTIVE');
-            } else if (error?.code === -5) {
-              popupNotifyRef.current?.open('KYC');
-            } else {
-              Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
-            }
-          },
-        );
+        console.log('response openService', response);
       },
       (error) => {
-        console.log('error', error);
-        Alert.alert('Thông báo', `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`);
+        console.log('error openService', error);
+        handleErrorSDK(error);
+        if (error?.code === -4) {
+          popupNotifyRef.current?.open('ACTIVE');
+        } else if (error?.code === -5) {
+          popupNotifyRef.current?.open('KYC');
+        } else {
+          Alert.alert(
+            'Thông báo',
+            `${error?.message || ''} ${error?.code ? `(${error?.code})` : ''}`,
+          );
+        }
       },
     );
   };
 
+  const handlePressItem = (item) => {
+    if (!checkLoginSDK()) {
+      payMELogin().then((res) => {
+        if (res) {
+          openService(item);
+        }
+      });
+    } else {
+      openService(item);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}> 
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
         <Text style={styles.txtServicePaymeLable}>Dịch vụ tiện ích PayME</Text>
-        <TouchableOpacity hitSlop={{top: 10, bottom: 10, right: 10, left: 10}} onPress={() => setToggle(!toggle)}>
-        {
-          toggle ? <ImagesSVG.iconMoreService /> : <ImagesSVG.iconMoreServiceDown />
-        }
+        <TouchableOpacity
+          hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
+          onPress={() => setToggle(!toggle)}>
+          {toggle ? (
+            <ImagesSVG.iconMoreService />
+          ) : (
+            <ImagesSVG.iconMoreServiceDown />
+          )}
         </TouchableOpacity>
       </View>
       <Text style={styles.txtDes}>
@@ -65,7 +108,10 @@ export const ServiceUtilPayme = ({data, popupNotifyRef}) => {
 
       <View style={styles.listService__container}>
         {getList()?.map((item) => (
-          <TouchableOpacity key={item.code} style={styles.item__container} onPress={() => handlePressItem(item)}>
+          <TouchableOpacity
+            key={item.code}
+            style={styles.item__container}
+            onPress={() => handlePressItem(item)}>
             {getIconService(item.code)}
             <Text style={styles.txtNameService}>{item.description}</Text>
           </TouchableOpacity>
@@ -93,7 +139,7 @@ const styles = StyleSheet.create({
     width: '25%',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 5
+    marginTop: 5,
   },
   txtServicePaymeLable: {
     fontFamily: Fonts.MainSemiBold,

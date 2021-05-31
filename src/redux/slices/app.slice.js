@@ -10,6 +10,7 @@ const initialState = {
   field: FIELDS.DEFAULT,
   appEnv: 'SANDBOX',
   showLog: false,
+  isLoginSDK: false,
 };
 
 const appSlice = createSlice({

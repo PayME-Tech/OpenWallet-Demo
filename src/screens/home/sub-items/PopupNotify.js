@@ -10,6 +10,7 @@ import {ModalizeTransparent} from '../../../components/ModalizeTransparent';
 import {RF} from '../../../helpers/ResponsiveFontSize';
 import {updateApp} from '../../../redux/slices/app.slice';
 import payME from 'react-native-payme-sdk';
+import { handleErrorSDK } from '../../../helpers';
 
 export const PopupNotify = React.forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
@@ -37,10 +38,11 @@ export const PopupNotify = React.forwardRef((props, ref) => {
     closeModal();
     payME.openWallet(
       (res) => {
-        console.log(res);
+        console.log('response openWllet', res);
       },
-      (message) => {
-        console.log(message);
+      (error) => {
+        console.log('error openWallet', error);
+        handleErrorSDK(error);
       },
     );
   };
