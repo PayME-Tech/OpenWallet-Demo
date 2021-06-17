@@ -27,8 +27,8 @@
 		52B9C58925B67C1800D1C5E7 /* SVN-Brocha Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 52B9C58125B67C1800D1C5E7 /* SVN-Brocha Semibold.otf */; };
 		52B9C5C825B6830A00D1C5E7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9C5C725B6830A00D1C5E7 /* File.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BFE60D86ECA8C1ECEBEAF243 /* libPods-AppDemoSDK-AppDemoSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4160A45175C6A45ADA4C2675 /* libPods-AppDemoSDK-AppDemoSDKTests.a */; };
-		C7333CD6FEE01D32EEB174D3 /* libPods-AppDemoSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55442EDB6AFAA766242B7EFA /* libPods-AppDemoSDK.a */; };
+		821CF2D5B402AF39F0F2F510 /* Pods_AppDemoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E214A39366DC1C2672F80CCF /* Pods_AppDemoSDK.framework */; };
+		E968BD05F33D4BA04F7BA163 /* Pods_AppDemoSDK_AppDemoSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1548B3644C589CB96619CC /* Pods_AppDemoSDK_AppDemoSDKTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +53,7 @@
 		00E356EE1AD99517003FC87E /* AppDemoSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDemoSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AppDemoSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDemoSDKTests.m; sourceTree = "<group>"; };
+		0A1548B3644C589CB96619CC /* Pods_AppDemoSDK_AppDemoSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDemoSDK_AppDemoSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* AppDemoSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDemoSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppDemoSDK/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppDemoSDK/AppDelegate.m; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		1BA97886C2A6F71FF06EA99A /* Pods-AppDemoSDK-AppDemoSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-AppDemoSDKTests.release.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-AppDemoSDKTests/Pods-AppDemoSDK-AppDemoSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* AppDemoSDK-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppDemoSDK-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* AppDemoSDK-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AppDemoSDK-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4160A45175C6A45ADA4C2675 /* libPods-AppDemoSDK-AppDemoSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDemoSDK-AppDemoSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2AA27A2E2DEF70B54D8801 /* Pods-AppDemoSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK.debug.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK/Pods-AppDemoSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		52B9C57A25B67C1700D1C5E7 /* Sarabun-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sarabun-Light.ttf"; path = "../../assets/fonts/Sarabun-Light.ttf"; sourceTree = "<group>"; };
 		52B9C57B25B67C1700D1C5E7 /* Sarabun-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sarabun-SemiBold.ttf"; path = "../../assets/fonts/Sarabun-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -75,7 +75,6 @@
 		52B9C58125B67C1800D1C5E7 /* SVN-Brocha Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SVN-Brocha Semibold.otf"; path = "../../assets/fonts/SVN-Brocha Semibold.otf"; sourceTree = "<group>"; };
 		52B9C5C625B6830900D1C5E7 /* AppDemoSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDemoSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		52B9C5C725B6830A00D1C5E7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		55442EDB6AFAA766242B7EFA /* libPods-AppDemoSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDemoSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A54144F27896769FD12F861 /* libPods-AppDemoSDK-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppDemoSDK-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4A8D4F203F9622B29D7041 /* Pods-AppDemoSDK-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-tvOS/Pods-AppDemoSDK-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AppDemoSDK/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		C471F75668925A06F1E4255C /* Pods-AppDemoSDK-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-tvOSTests/Pods-AppDemoSDK-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		CAD58FCBCE0A6E18601693B5 /* Pods-AppDemoSDK-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-tvOS/Pods-AppDemoSDK-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D827F2A28E4DE9A344426E4E /* Pods-AppDemoSDK-AppDemoSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-AppDemoSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-AppDemoSDKTests/Pods-AppDemoSDK-AppDemoSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E214A39366DC1C2672F80CCF /* Pods_AppDemoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDemoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F6CD3613EF8FF7DC47BA3AE7 /* Pods-AppDemoSDK-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDemoSDK-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppDemoSDK-tvOSTests/Pods-AppDemoSDK-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE60D86ECA8C1ECEBEAF243 /* libPods-AppDemoSDK-AppDemoSDKTests.a in Frameworks */,
+				E968BD05F33D4BA04F7BA163 /* Pods_AppDemoSDK_AppDemoSDKTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7333CD6FEE01D32EEB174D3 /* libPods-AppDemoSDK.a in Frameworks */,
+				821CF2D5B402AF39F0F2F510 /* Pods_AppDemoSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,10 +160,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				55442EDB6AFAA766242B7EFA /* libPods-AppDemoSDK.a */,
-				4160A45175C6A45ADA4C2675 /* libPods-AppDemoSDK-AppDemoSDKTests.a */,
 				5A54144F27896769FD12F861 /* libPods-AppDemoSDK-tvOS.a */,
 				A7F67316D639781D2FCB5EC3 /* libPods-AppDemoSDK-tvOSTests.a */,
+				E214A39366DC1C2672F80CCF /* Pods_AppDemoSDK.framework */,
+				0A1548B3644C589CB96619CC /* Pods_AppDemoSDK_AppDemoSDKTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 75;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = JHVD9NA6RN;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDemoSDK/Info.plist;
@@ -741,7 +741,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 75;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = JHVD9NA6RN;
 				INFOPLIST_FILE = AppDemoSDK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
