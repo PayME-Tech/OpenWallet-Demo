@@ -58,6 +58,9 @@ export const getIconService = (code) => {
   if (code === 'ADVANCE_SALARY') {
     return <ImagesSVG.IconUngLuongHome />;
   }
+  if (code === 'FAST_LOAN') {
+    return <ImagesSVG.IconVayNhanh />;
+  }
   return <ImagesSVG.iconServiceNull />;
 };
 

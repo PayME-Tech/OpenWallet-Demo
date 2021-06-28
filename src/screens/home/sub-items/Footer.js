@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Colors} from '../../../assets/Colors';
 import {ImagesSVG} from '../../../assets/Image';
 
-export const Footer = ({colors}) => {
+export const Footer = ({colors, scanQR = () => null}) => {
   return (
     <>
       <View style={styles.container}>
@@ -14,9 +14,9 @@ export const Footer = ({colors}) => {
         </View>
 
         <View style={styles.center}>
-          <View style={styles.btnScan}>
+          <TouchableOpacity style={styles.btnScan} onPress={scanQR}>
             <ImagesSVG.ButtonScan fill={colors[0] || '#ffffff'} />
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.right}>

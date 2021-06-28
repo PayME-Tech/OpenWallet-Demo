@@ -169,7 +169,7 @@ export const Home = () => {
 
   // get balance
   const getWalletInfo = () => {
-    console.log('getWalletInfo func')
+    console.log('getWalletInfo func');
     payME.getWalletInfo(
       (response) => {
         console.log('response getWalletInfo', response);
@@ -187,7 +187,7 @@ export const Home = () => {
   };
 
   const getSupportedServices = () => {
-    console.log('getSupportedServices func')
+    console.log('getSupportedServices func');
     payME.getSupportedServices(
       (response) => {
         console.log('response getSupportedServices', response);
@@ -197,6 +197,32 @@ export const Home = () => {
         console.log('error getSupportedServices', error);
       },
     );
+  };
+
+  const scanQR = () => {
+    if (!checkLoginSDK()) {
+      payMELogin().then((res) => {
+        if (res) {
+          payME.scanQR(
+            (response) => {
+              console.log('response scanQR', response);
+            },
+            (error) => {
+              console.log('error scanQR', error);
+            },
+          );
+        }
+      });
+    } else {
+      payME.scanQR(
+        (response) => {
+          console.log('response scanQR', response);
+        },
+        (error) => {
+          console.log('error scanQR', error);
+        },
+      );
+    }
   };
 
   // open popup input phone first time open app
@@ -300,7 +326,7 @@ export const Home = () => {
 
       {renderContent()}
 
-      <Footer colors={colors} />
+      <Footer colors={colors} scanQR={scanQR} />
 
       <PopupInputPhone
         modalRef={popupInputPhoneRef}

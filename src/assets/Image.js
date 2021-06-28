@@ -32,6 +32,7 @@ import IconGameCard from './images/svg/iconGamecard.svg';
 import IconServiceInsurrance from './images/svg/iconBaohiem.svg';
 import IconServiceLixi from './images/svg/iconLixi.svg';
 import IconUngLuongHome from './images/svg/iconUngLuongHome.svg';
+import IconVayNhanh from './images/svg/iconVaynhanh.svg';
 
 export const ImagesSVG = {
   IconColor,
@@ -67,7 +68,8 @@ export const ImagesSVG = {
   IconGameCard,
   IconServiceInsurrance,
   IconServiceLixi,
-  IconUngLuongHome
+  IconUngLuongHome,
+  IconVayNhanh,
 };
 
 export const Images = {
