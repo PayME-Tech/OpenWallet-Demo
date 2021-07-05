@@ -3,7 +3,7 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import NavApp from '../navigation';
 import {TouchableOpacity} from 'react-native';
-
+import * as Sentry from '@sentry/react-native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import store, {persistor} from '../redux/redux.store';
@@ -15,6 +15,11 @@ TouchableOpacity.defaultProps = {
 };
 
 const App = () => {
+  Sentry.init({
+    dsn:
+      'https://759ec3df6a0c45878d25586e78e9628f@o405361.ingest.sentry.io/5840191',
+  });
+
   React.useEffect(() => {
     SplashScreen.hide();
   }, []);
