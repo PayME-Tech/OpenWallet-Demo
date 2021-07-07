@@ -142,7 +142,7 @@ export const Home = () => {
       connectToken,
       APP_ENV[appEnv].privateKey,
       configColor,
-      LANGUAGES.VN,
+      LANGUAGES.VIETNAMESE,
       APP_ENV[appEnv].env,
       // showLog
     );
