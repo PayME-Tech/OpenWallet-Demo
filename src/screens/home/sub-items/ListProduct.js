@@ -17,6 +17,28 @@ import {SCREEN_SIZE} from '../../../configs/variables.config';
 import LinearGradient from 'react-native-linear-gradient';
 
 export const ListProduct = ({handlePay}) => {
+  const items = [
+    {
+      amount: 299000,
+      display: '299,000 đ',
+      payCode: 'PAYME',
+    },
+    {
+      amount: 299000,
+      display: '299,000 đ',
+      payCode: 'ATM',
+    },
+    {
+      amount: 299000,
+      display: '299,000 đ',
+      payCode: 'CREDIT',
+    },
+    {
+      amount: 3999000,
+      display: '3,999,000 đ',
+      payCode: 'MANUAL_BANK',
+    },
+  ];
   return (
     <View style={styles.container}>
       <Text style={styles.txtTitle}>Thanh toán sản phẩm của bạn</Text>
@@ -26,8 +48,8 @@ export const ListProduct = ({handlePay}) => {
         bounces={false}
         showsHorizontalScrollIndicator={false}
         horizontal>
-        {['1', '2', '3', '4'].map((item) => (
-          <View style={styles.item__container} key={item}>
+        {items.map((item, index) => (
+          <View style={styles.item__container} key={item.payCode}>
             <View style={styles.item__content__container}>
               <Image
                 source={Images.BannerSample}
@@ -39,8 +61,8 @@ export const ListProduct = ({handlePay}) => {
               />
 
               <View style={styles.item__content}>
-                <Text style={styles.txtNameProduct}>Sản phẩm 1</Text>
-                <Text style={styles.txtPriceProduct}>{item === '4' ? '3,999,000 đ' : '299,000 đ'}</Text>
+                <Text style={styles.txtNameProduct}>{`Sản phẩm ${index + 1}`}</Text>
+                <Text style={styles.txtPriceProduct}>{item.display}</Text>
               </View>
             </View>
 
@@ -51,7 +73,7 @@ export const ListProduct = ({handlePay}) => {
               style={{marginTop: 10, borderRadius: 20}}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => handlePay?.(item === '4' ? 3999000 : 299000)}>
+                onPress={() => handlePay?.(item.amount, item.payCode)}>
                 <Text style={styles.txtBtn}>Thanh toán ngay</Text>
               </TouchableOpacity>
             </LinearGradient>

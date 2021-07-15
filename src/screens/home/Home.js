@@ -61,7 +61,7 @@ export const Home = () => {
     // Alert.alert(`showLog: ${newShowLog}`, '');
   };
 
-  const handlePay = (amount = 299000) => {
+  const handlePay = (amount = 299000, paycode = 'PAYME') => {
     if (!checkValidPhoneNumber(phone)) {
       Alert.alert('Thông báo', 'Số điện thoại không hợp lệ');
       return;
@@ -76,7 +76,7 @@ export const Home = () => {
             appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
             'extractData',
             true,
-            null,
+            paycode,
             (res) => {
               console.log('response pay', res);
               getWalletInfo();
@@ -105,7 +105,7 @@ export const Home = () => {
         appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
         'extractData',
         true,
-        null,
+        paycode,
         (res) => {
           console.log('response pay', res);
           getWalletInfo();
@@ -204,6 +204,7 @@ export const Home = () => {
       payMELogin().then((res) => {
         if (res) {
           payME.scanQR(
+            'PAYME',
             (response) => {
               console.log('response scanQR', response);
             },
@@ -215,6 +216,7 @@ export const Home = () => {
       });
     } else {
       payME.scanQR(
+        'PAYME',
         (response) => {
           console.log('response scanQR', response);
         },
