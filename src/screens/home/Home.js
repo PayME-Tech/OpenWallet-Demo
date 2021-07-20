@@ -72,7 +72,7 @@ export const Home = () => {
           payME.pay(
             appEnv === 'SANDBOX' ? amount : 10000,
             'note',
-            new Date().toISOString(),
+            Date.now().toString(),
             appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
             'extractData',
             true,
@@ -101,7 +101,7 @@ export const Home = () => {
       payME.pay(
         appEnv === 'SANDBOX' ? amount : 10000,
         'note',
-        new Date().toISOString(),
+        Date.now().toString(),
         appEnv === 'SANDBOX' ? 24088141 : 25092940, // stroreId
         'extractData',
         true,
