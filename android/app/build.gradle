@@ -132,7 +132,7 @@ android {
         applicationId "com.appdemosdk"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 84
+        versionCode 85
         versionName "1.0.0"
     }
     dexOptions {

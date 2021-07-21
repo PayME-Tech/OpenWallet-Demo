@@ -6272,10 +6272,10 @@ react-native-modalize@^2.0.8:
   resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.8.tgz#5dcb2c56d82e3dbd271582f832e7e02ae4cbb503"
   integrity sha512-OKdpFVExEe4YM2uFHL/aStS9p0JaC6gBupjaW1QVHkGq22T2ASYwkhDvTnMS8BLOLWPx2fC3xEBzOcn2rh7EYw==
 
-react-native-payme-sdk@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/react-native-payme-sdk/-/react-native-payme-sdk-0.9.1.tgz#b3485b69e4ef4675e8882cd1553e5ce8cefd538e"
-  integrity sha512-AQEjNYYTZPxiyVuZyew4ENwjRiLGG1KnCt1WYUX2vN4FXd1NEDRAIhKat54gXHeiaFgPvvRtPBK+cMfMGsdn9w==
+react-native-payme-sdk@^0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/react-native-payme-sdk/-/react-native-payme-sdk-0.9.2.tgz#ddc2ad549bcbb48569e8fa81c91d992ab659e337"
+  integrity sha512-gl+KUvb5Mdv1owTg36dixr5prGINJn/wTNg4AFQ/LqwwRIYl0c7enWn8N0/YluGbMDW1yYr54rCzwUAPB4DUNQ==
   dependencies:
     "@react-native-community/async-storage" "^1.12.0"
     axios "^0.20.0"
