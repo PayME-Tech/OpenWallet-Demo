@@ -5,42 +5,47 @@ import {Colors} from '../assets/Colors';
 
 const {width, height} = Dimensions.get('window');
 
-export const ModalizeTransparent = forwardRef((props, ref) => {
-  const modalRef = useRef(null);
+export const ModalizeTransparent = forwardRef(
+  (
+    {scrollViewProps = {}, modalStyle = {}, onClose = () => {}, ...props},
+    ref,
+  ) => {
+    const modalRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    close: () => {
-      modalRef.current?.close();
-    },
-    open: () => {
-      modalRef.current?.open();
-    },
-  }));
+    useImperativeHandle(ref, () => ({
+      close: () => {
+        modalRef.current?.close();
+      },
+      open: () => {
+        modalRef.current?.open();
+      },
+    }));
 
-  return (
-    <Modalize
-      useNativeDrive
-      ref={modalRef}
-      scrollViewProps={{
-        scrollEnabled: false,
-        showsVerticalScrollIndicator: false,
-        ...props.scrollViewProps,
-      }}
-      rootStyle={props.rootStyle}
-      modalStyle={[styles.modalStyle, props.style]}
-      onOpen={async () => {
-        Keyboard.dismiss();
-      }}
-      withHandle={false}
-      adjustToContentHeight
-      {...props}
-      onClose={() => {
-        props.onClose && props.onClose();
-      }}>
-      {<SafeAreaView>{props.children}</SafeAreaView>}
-    </Modalize>
-  );
-});
+    return (
+      <Modalize
+        useNativeDrive
+        ref={modalRef}
+        scrollViewProps={{
+          scrollEnabled: false,
+          showsVerticalScrollIndicator: false,
+          keyboardShouldPersistTaps: 'handled',
+          ...scrollViewProps,
+        }}
+        modalStyle={[styles.modalStyle, modalStyle]}
+        onOpen={async () => {
+          Keyboard.dismiss();
+        }}
+        withHandle={false}
+        adjustToContentHeight
+        {...props}
+        onClose={() => {
+          onClose && onClose();
+        }}>
+        {<SafeAreaView>{props.children}</SafeAreaView>}
+      </Modalize>
+    );
+  },
+);
 
 export const styles = StyleSheet.create({
   modalStyle: {

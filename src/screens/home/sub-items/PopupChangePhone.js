@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
@@ -16,7 +17,7 @@ export const PopupChangePhone = ({modalRef}) => {
   };
 
   return (
-      <ModalizeTransparent ref={modalRef} modalStyle={styles.modalStyle}>
+    <ModalizeTransparent ref={modalRef} modalStyle={styles.modalStyle}>
       <View style={styles.modalContainer}>
         <Text
           style={{
@@ -25,7 +26,9 @@ export const PopupChangePhone = ({modalRef}) => {
             fontSize: RF(14),
             fontFamily: Fonts.MainRegular,
             paddingVertical: 40,
-          }}>{`Bạn có muốn thay đổi\n số điện thoại khác`}</Text>
+          }}>
+          {'Bạn có muốn thay đổi\n số điện thoại khác'}
+        </Text>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity style={styles.btn} onPress={handlePressCancel}>
             <Text
@@ -66,6 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'transparent',
+    minHeight: '101%',
   },
   modalContainer: {
     flex: 1,

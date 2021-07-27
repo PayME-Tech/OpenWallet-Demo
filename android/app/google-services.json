@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1031324237197",
+    "project_id": "payme-opensdk-demo",
+    "storage_bucket": "payme-opensdk-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031324237197:android:35cec5bfcde201ea8311c4",
+        "android_client_info": {
+          "package_name": "com.appdemosdk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031324237197-tpidk32mutj0al1i5gbript4r50tpdna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appdemosdk",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1031324237197-d3gtnojevud9lqqnkmngk3q0kntdbv7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdd272bwWHJ3cARoeoWEjS4JVkMA5ccvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031324237197-d3gtnojevud9lqqnkmngk3q0kntdbv7j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1031324237197-q9j7993ufc7mksegr8s6lnqib48qa4ng.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.payme.sdk.demo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

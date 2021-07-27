@@ -228,11 +228,11 @@ export const Home = () => {
   };
 
   // open popup input phone first time open app
-  useEffect(() => {
-    if (!phone) {
-      openPopupInputPhone();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!phone) {
+  //     openPopupInputPhone();
+  //   }
+  // }, []);
 
   // check phone, appEnv, field -> re-init
   useEffect(() => {

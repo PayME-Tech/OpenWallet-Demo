@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import store, {persistor} from '../redux/redux.store';
 import SplashScreen from 'react-native-splash-screen';
+import { LoadingApp } from '../components/LoadingApp';
 
 TouchableOpacity.defaultProps = {
   ...TouchableOpacity.defaultProps,
@@ -34,6 +35,7 @@ const App = () => {
             backgroundColor="transparent"
           />
           <NavApp />
+          <LoadingApp />
         </>
       </PersistGate>
     </Provider>

@@ -77,3 +77,15 @@ export const handleErrorSDK = (error = {}) => {
     store.dispatch(updateApp({isLoginSDK: false}));
   }
 };
+
+export function convertPhoneNumberGlobal(number) {
+  const prefixPhoneGlobal = '84';
+  let suffix = '';
+  if (number.toString().slice(0, 2) === '84') {
+    suffix = number.replace(/^.{2}/g, '');
+  } else {
+    suffix = number.replace(/^./, '');
+  }
+
+  return prefixPhoneGlobal + suffix;
+}

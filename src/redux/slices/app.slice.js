@@ -11,6 +11,7 @@ const initialState = {
   appEnv: 'SANDBOX',
   showLog: false,
   isLoginSDK: false,
+  loadingApp: false,
 };
 
 const appSlice = createSlice({

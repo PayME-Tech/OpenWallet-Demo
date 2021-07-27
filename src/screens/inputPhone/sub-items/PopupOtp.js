@@ -4,30 +4,40 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {verifyOTP} from '../../../apis';
 import {Colors} from '../../../assets/Colors';
 import {Fonts} from '../../../assets/Fonts';
+import {ImagesSVG} from '../../../assets/Image';
+import {IconButton} from '../../../components/IconButton';
 import {ModalizeTransparent} from '../../../components/ModalizeTransparent';
 import PasswordInputConfirm from '../../../components/PasswordInputConfirm';
 import {RF} from '../../../helpers/ResponsiveFontSize';
 
-export const PopupOtp = ({modalRef, updatePhone, phone}) => {
+export const PopupOtp = ({
+  modalRef,
+  updatePhone,
+  phone,
+  onConfirmOTP = () => {},
+  resendOTP = () => {},
+  closeModal = () => {},
+}) => {
   const inputRef = useRef(null);
 
   const onSubmitOtp = async (value) => {
     console.log('object', value);
     console.log('phone', phone);
-    const response = await verifyOTP(phone, value);
-    console.log('=========', response);
-    if (response.status) {
-      if (response.response.Account?.ForgotPassword?.VerifyOTP?.succeeded) {
-        updatePhone?.();
-      } else {
-        alert(
-          response.response.Account?.ForgotPassword?.VerifyOTP?.message ||
-            'Error',
-        );
-      }
-    } else {
-      alert('Call api error');
-    }
+    onConfirmOTP(value);
+    // const response = await verifyOTP(phone, value);
+    // console.log('=========', response);
+    // if (response.status) {
+    //   if (response.response.Account?.ForgotPassword?.VerifyOTP?.succeeded) {
+    //     updatePhone?.();
+    //   } else {
+    //     alert(
+    //       response.response.Account?.ForgotPassword?.VerifyOTP?.message ||
+    //         'Error',
+    //     );
+    //   }
+    // } else {
+    //   alert('Call api error');
+    // }
   };
 
   const focusOtpInput = () => {
@@ -40,15 +50,23 @@ export const PopupOtp = ({modalRef, updatePhone, phone}) => {
       modalStyle={styles.modalStyle}
       onOpened={focusOtpInput}>
       <View style={styles.modalContainer}>
-        <Text
-          style={{
-            color: Colors.blackFifteen,
-            fontSize: RF(17),
-            fontFamily: Fonts.MainSemiBold,
-            textAlign: 'center',
-          }}>
-          Nhập OTP{' '}
-        </Text>
+        <View style={{justifyContent: 'center'}}>
+          <Text
+            style={{
+              color: Colors.blackFifteen,
+              fontSize: RF(17),
+              fontFamily: Fonts.MainSemiBold,
+              textAlign: 'center',
+            }}>
+            Nhập OTP{' '}
+          </Text>
+          <IconButton
+            source={<ImagesSVG.IcSetClose16Px />}
+            onPress={closeModal}
+            style={styles.iconClose}
+          />
+        </View>
+
         <Text
           style={{
             color: Colors.blackFifteen,
@@ -56,7 +74,7 @@ export const PopupOtp = ({modalRef, updatePhone, phone}) => {
             fontFamily: Fonts.MainRegular,
             textAlign: 'center',
           }}>
-          Đã gửi về số điện thoại: <Text style={styles.phone}>0909246357</Text>
+          Đã gửi về số điện thoại: <Text style={styles.phone}>{phone}</Text>
         </Text>
         <View style={{marginVertical: 20}}>
           <PasswordInputConfirm onSubmit={onSubmitOtp} ref={inputRef} />
@@ -71,7 +89,7 @@ export const PopupOtp = ({modalRef, updatePhone, phone}) => {
             }}>
             Chưa nhận được OTP.
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={resendOTP}>
             <Text
               style={{
                 color: Colors.emeraldGreenFour,
@@ -93,6 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'transparent',
+    minHeight: '101%',
   },
   modalContainer: {
     flex: 1,
@@ -106,5 +125,9 @@ const styles = StyleSheet.create({
     color: Colors.blackFifteen,
     fontSize: RF(14),
     fontFamily: Fonts.MainSemiBold,
+  },
+  iconClose: {
+    position: 'absolute',
+    right: 10,
   },
 });
