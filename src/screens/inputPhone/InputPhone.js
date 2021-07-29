@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useRef, useState} from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Image,
   Keyboard,
@@ -32,6 +33,7 @@ export const InputPhone = () => {
   const [blur, setBlur] = useState(false);
 
   const [confirm, setConfirm] = useState(null);
+  const [onSendingOTP, setOnSendingOTP] = useState(false);
 
   async function signInWithPhoneNumber(phoneNumber) {
     try {
@@ -49,7 +51,7 @@ export const InputPhone = () => {
   const closePopupOtp = () => popupOtpRef?.current?.close();
 
   const onConfirmOTP = async (otp) => {
-    closePopupOtp();
+    // closePopupOtp();
     dispatch(updateApp({loadingApp: true}));
     const isSuccessConfirmOtp = await confirmCode(otp);
     dispatch(updateApp({loadingApp: false}));
@@ -76,14 +78,20 @@ export const InputPhone = () => {
   }
 
   const onSendOtp = async (phone) => {
+    if (onSendingOTP) {
+      return;
+    }
+    setOnSendingOTP(true);
     // console.log(phone);
     // return;
     const phoneNumberGlobal = convertPhoneNumberGlobal(phone);
     const isSendOtp = await signInWithPhoneNumber(`+${phoneNumberGlobal}`);
     if (isSendOtp) {
       openPopupOtp();
+      setOnSendingOTP(false);
     } else {
       Alert.alert('Thông báo', 'Không gửi được OTP');
+      setOnSendingOTP(false);
     }
   };
 
@@ -189,7 +197,11 @@ export const InputPhone = () => {
                 style={{marginTop: 10, borderRadius: 25}}>
                 <TouchableOpacity
                   style={styles.button}
+                  disabled={onSendingOTP}
                   onPress={handlePressBtn}>
+                  {onSendingOTP && (
+                    <ActivityIndicator size="small" color={Colors.white} />
+                  )}
                   <Text style={styles.txtBtn}>Bắt đầu</Text>
                 </TouchableOpacity>
               </LinearGradient>
@@ -252,7 +264,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    // flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -262,6 +274,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.MainSemiBold,
     fontSize: 18,
     color: Colors.white,
+    marginLeft: 10,
   },
   txtError: {
     fontFamily: Fonts.MainRegular,
